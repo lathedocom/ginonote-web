@@ -3,200 +3,597 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Điều khoản và Điều kiện - GinoNote</title>
-    <style>
-       
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+    <title>GinoNote - Khắc ghi chú vào trí nhớ</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-        /* Bảng màu Sáng (Light Mode) - Đồng bộ với giao diện Web */
+    <style>
+        /* Bảng màu chuẩn theo logo GinoNote */
         :root {
             --primary-color: #0E4B75; 
             --primary-dark: #0A3552;
             --text-main: #333333;
             --text-light: #666666;
-            --bg-main: #ffffff; /* Dùng nền trắng cho dễ đọc trên app di động */
-            --border-color: #e0e0e0;
-            --badge-bg: #f0f4f8;
-            --highlight-bg: #fff3cd;
-            --highlight-text: #856404;
-            --gino-bg: #e6f4ea;
-            --gino-text: #137333;
-            --gino-border: #ceead6;
-            --cta-bg: rgba(14, 75, 117, 0.05);
+            --bg-light: #f5f5f5;
+            --card-bg: #ffffff;
         }
 
-        /* Bảng màu Tối (Dark Mode) - Tự động kích hoạt theo hệ điều hành */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --primary-color: #8ab4f8; /* Xanh sáng hơn để nổi bật trên nền đen */
-                --primary-dark: #aecbfa;
-                --text-main: #e8eaed;
-                --text-light: #9aa0a6;
-                --bg-main: #121212;
-                --border-color: #3c4043;
-                --badge-bg: #3c4043;
-                --highlight-bg: #423518;
-                --highlight-text: #fde293;
-                --gino-bg: #0d3c26;
-                --gino-text: #81c995;
-                --gino-border: #185c37;
-                --cta-bg: rgba(138, 180, 248, 0.1);
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            padding-top: 64px; 
+        }
+
+        /* --- Toolbar --- */
+        .toolbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 64px;
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            z-index: 1000;
+        }
+
+        .toolbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--primary-color);
+        }
+
+        .toolbar-logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .lang-btn {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 6px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* --- Bố cục chung --- */
+        .section-wrapper {
+            max-width: 900px; /* Tăng nhẹ chiều rộng để chứa bố cục ngang đẹp hơn */
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- Phần 1: Hero --- */
+        .hero-section {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .hero-logo {
+            width: 250px;
+            margin-bottom: 20px;
+        }
+
+        .hero-slogan {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--primary-dark);
+        }
+
+        .playstore-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            box-shadow: 0 4px 6px rgba(14, 75, 117, 0.3);
+            transition: background-color 0.3s;
+        }
+
+        .playstore-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* --- Phần 2: Thiết kế thẻ CẬP NHẬT (Responsive & Gọn gàng) --- */
+        .container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container__top-line {
+            height: 4px;
+            background-color: var(--primary-color);
+            width: 100%;
+        }
+
+        /* Mặc định trên Mobile: Căn giữa, giới hạn chiều cao để không chiếm toàn bộ màn hình */
+        .container__top-photo {
+            text-align: center;
+            background-color: #f8fafe; /* Màu nền mờ giúp ảnh nổi bật */
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .container__top-photo img {
+            max-width: 200%;
+            max-height: 500px; /* Giới hạn chiều cao */
+            width: auto;
+            height: auto;
+            display: inline-block;
+            border-radius: 8px; /* Bo góc ảnh nhẹ nhàng */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Đổ bóng cho ảnh */
+        }
+
+        .container__top-body {
+            padding: 20px;
+        }
+
+        .container__h2 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            color: var(--primary-dark);
+        }
+
+        .container__h2-description {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .container__bottom {
+            padding: 15px 20px;
+            background-color: #fafafa;
+            border-top: 1px solid #eee;
+        }
+
+        .container__bottom-wrap {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .container__bottom-icon i {
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .container__bottom-text {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* PC / Tablet: Chia lưới Ảnh bên trái, Chữ bên phải */
+        @media (min-width: 768px) {
+            .container__top.has-image {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+            .container__top-photo {
+                flex: 0 0 40%; /* Ảnh chiếm 40% chiều rộng */
+                border-bottom: none;
+                border-right: 1px solid #eee;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 150%;
+                min-height: 500px;
+            }
+            .container__top-body {
+                flex: 1; /* Chữ chiếm phần còn lại */
+                padding: 30px;
             }
         }
 
-        /* Bố cục và Typography chung */
-        body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            padding: 20px;
-            color: var(--text-main);
-            background-color: var(--bg-main);
-            margin: 0 auto;
-            max-width: 800px;
-            transition: background-color 0.3s, color 0.3s;
+        /* --- Phần 3: Ưu điểm --- */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
         }
 
-        h1 {
-            font-size: 26px;
-            color: var(--primary-dark);
+        @media (min-width: 600px) {
+            .advantages-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .extra__section {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             text-align: center;
-            margin-bottom: 8px;
+            transition: transform 0.3s;
         }
 
-        h2 {
-            font-size: 20px;
-            margin-top: 32px;
-            margin-bottom: 12px;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 6px;
+        .extra__section:hover {
+            transform: translateY(-5px);
+        }
+
+        .extra__section-icon i {
+            font-size: 48px;
             color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            margin-bottom: 15px;
         }
 
-        p { margin-bottom: 14px; }
-        ul { padding-left: 20px; margin-bottom: 16px; }
-        li { margin-bottom: 10px; }
-        strong { color: var(--text-main); font-weight: 700; }
-        
-        a {
+        .extra__section-text-h2 {
+            font-size: 18px;
+            margin: 0 0 10px 0;
+        }
+
+        .extra__section-text-description {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* --- Phần 4: Kêu gọi hành động --- */
+        .super__free {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 40px 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(14, 75, 117, 0.4);
+        }
+
+        .super__free-h3 {
+            font-size: 28px;
+            margin: 0 0 15px 0;
+        }
+
+        .super__free-description {
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* --- Phần 5: Footer --- */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .footer a {
             color: var(--primary-color);
             text-decoration: none;
-            font-weight: 500;
-        }
-        
-        a:hover { 
-            text-decoration: underline; 
-        }
-
-        /* Các thành phần trang trí (Chủ yếu dành cho trang Hướng dẫn) */
-        .subtitle {
-            text-align: center;
-            font-style: italic;
-            color: var(--text-light);
-            margin-bottom: 24px;
-            font-size: 15px;
-        }
-
-        .btn-badge {
-            background-color: var(--badge-bg);
-            color: var(--primary-color);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-weight: 500;
-            font-size: 13px;
-            border: 1px solid var(--border-color);
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .highlight {
-            background-color: var(--highlight-bg);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: monospace;
-            color: var(--highlight-text);
+            margin: 0 10px;
             font-weight: 500;
         }
 
-        .file-gino {
-            background-color: var(--gino-bg);
-            color: var(--gino-text);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 700;
-            border: 1px solid var(--gino-border);
+        .footer a:hover {
+            text-decoration: underline;
         }
 
-        .inline-icon {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
-            vertical-align: middle;
+        /* Video Iframe */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; 
+            height: 0;
+            overflow: hidden;
+            width: 100%;
         }
-
-        /* Khối Kêu gọi hành động (CTA) */
-        .cta-block {
-            text-align: center;
-            margin-top: 36px;
-            padding: 20px;
-            background-color: var(--cta-bg);
-            border-radius: 12px;
-            border-left: 4px solid var(--primary-color);
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
-
-        .cta-title {
-            margin: 0;
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .cta-desc {
-            margin: 8px 0 0 0;
-            font-size: 15px;
-            color: var(--text-light);
-        }
-
     </style>
 </head>
 <body>
-<h1>Điều khoản và Điều kiện</h1>
-<p>Các điều khoản và điều kiện này áp dụng cho ứng dụng GinoNote (sau đây gọi là "Ứng dụng") dành cho thiết bị di động do lathedo (sau đây gọi là "Nhà cung cấp Dịch vụ") tạo ra dưới dạng dịch vụ Thương mại.</p>
-<p>Khi tải xuống hoặc sử dụng Ứng dụng, bạn tự động đồng ý với các điều khoản dưới đây. Việc bạn sử dụng Ứng dụng cũng đồng thời phải tuân thủ Chính sách Bảo mật của chúng tôi.</p>
 
-<h2>Sở hữu Trí tuệ</h2>
-<p>Nghiêm cấm sao chép, sửa đổi Ứng dụng, bất kỳ phần nào của Ứng dụng hoặc các nhãn hiệu của chúng tôi mà không được phép. Tất cả các nhãn hiệu, bản quyền và các quyền sở hữu trí tuệ khác liên quan đến Ứng dụng đều thuộc tài sản của Nhà cung cấp Dịch vụ.</p>
+    <div class="toolbar">
+        <div class="toolbar-logo">
+            <img src="logo.png" alt="GinoNote Logo">
+            GinoNote
+        </div>
+        <button class="lang-btn" id="langToggle" onclick="toggleLanguage()">VI / EN</button>
+    </div>
 
-<h2>Sửa đổi Dịch vụ và Bảo mật Thiết bị</h2>
-<p>Nhà cung cấp Dịch vụ có quyền sửa đổi Ứng dụng hoặc tính phí cho các dịch vụ vào bất kỳ lúc nào. Mọi khoản phí sẽ được thông báo rõ ràng cho bạn.</p>
-<p>Bạn có trách nhiệm bảo mật điện thoại và quyền truy cập vào Ứng dụng. Nhà cung cấp Dịch vụ khuyến cáo bạn không nên bẻ khóa (jailbreak) hoặc can thiệp hệ thống (root) điện thoại của mình.</p>
+    <div class="section-wrapper">
+        <div class="hero-section">
+            <img src="logo.png" alt="GinoNote" class="hero-logo">
+            <h1 class="hero-slogan" data-i18n="slogan">Khắc ghi chú vào trí nhớ</h1>
+            <a href="https://play.google.com/store/apps/details?id=com.lathedo.ginonote" class="playstore-btn" target="_blank">
+                <span class="material-icons">shop</span>
+                <span data-i18n="download">Tải ứng dụng từ Play Store</span>
+            </a>
+        </div>
 
-<h2>Dịch vụ của Bên thứ ba</h2>
-<p>Ứng dụng sử dụng các dịch vụ của bên thứ ba có Điều khoản và Điều kiện riêng. Dưới đây là liên kết đến các nhà cung cấp dịch vụ bên thứ ba mà Ứng dụng sử dụng:</p>
-<ul>
-    <li><a href="https://policies.google.com/terms" target="_blank">Dịch vụ Google Play (Google Play Services)</a></li>
-    <li><a href="https://www.revenuecat.com/terms" target="_blank">RevenueCat</a></li>
-</ul>
+        <div class="container">
+            <div class="container__top has-image">
+                <div class="container__top-line"></div>
+                <div class="container__top-photo">
+                    <img src="ghichu.png" alt="Màn hình ghi chú" title="Giao diện ghi chú GinoNote">
+                </div>
+                <div class="container__top-body">
+                    <div class="container__wrap-h2">
+                        <h2 class="container__h2" data-i18n="box1_title">Ghi chú nhanh chóng, trực quan</h2>
+                        <div class="container__h2-description" data-i18n="box1_desc">
+                            Giao diện sạch sẽ giúp bạn tập trung hoàn toàn vào luồng suy nghĩ.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container__bottom">
+                <div class="container__bottom-wrap">
+                    <div class="container__bottom-icon">
+                        <i class="material-icons">edit_note</i>
+                    </div>
+                    <p class="container__bottom-text" data-i18n="box1_detail">Hỗ trợ định dạng văn bản phong phú, chèn hình ảnh và danh sách công việc một cách dễ dàng. Mọi ý tưởng đều được lưu giữ tức thì.</p>
+                </div>
+                <p class="container__bottom-text"><strong data-i18n="box1_strong">Mọi thứ bắt đầu từ một dòng ghi chú!</strong></p>
+            </div>
+        </div>
 
-<h2>Gói Đăng ký, Dùng thử Miễn phí và Mua hàng trong Ứng dụng</h2>
-<p>Ứng dụng cung cấp các tính năng cao cấp thông qua gói đăng ký hàng tháng, hàng năm và gói mua đứt một lần (trọn đời). Bằng cách chọn mua, bạn đồng ý với các điều khoản về giá cả và thanh toán được hiển thị tại thời điểm mua.</p>
-<ul>
-    <li><strong>Dùng thử miễn phí:</strong> Chúng tôi cung cấp bản dùng thử miễn phí 7 ngày cho các gói đăng ký. Trừ khi bạn hủy đăng ký ít nhất 24 giờ trước khi kết thúc 7 ngày dùng thử, tài khoản Google Play của bạn sẽ tự động bị tính phí cho gói đăng ký bạn đã chọn.</li>
-    <li><strong>Tự động gia hạn:</strong> Các gói đăng ký sẽ tự động gia hạn trừ khi tính năng tự động gia hạn được tắt ít nhất 24 giờ trước khi kết thúc chu kỳ thanh toán hiện tại.</li>
-    <li><strong>Hủy đăng ký:</strong> Bạn có thể quản lý và hủy các gói đăng ký của mình bất kỳ lúc nào bằng cách đi tới cài đặt tài khoản Google Play Store. Việc gỡ cài đặt Ứng dụng sẽ không tự động hủy đăng ký của bạn. Nếu bạn hủy, bạn vẫn có quyền truy cập vào các tính năng cao cấp cho đến khi kết thúc chu kỳ thanh toán hiện tại. Chúng tôi không hoàn tiền cho những ngày còn lại của chu kỳ.</li>
-    <li><strong>Mua Trọn đời:</strong> Tùy chọn "Trọn đời" là khoản thanh toán một lần, cấp cho bạn quyền truy cập vào các tính năng cao cấp miễn là Ứng dụng còn được duy trì hoạt động.</li>
-</ul>
+        <div class="container">
+            <div class="container__top has-image">
+                <div class="container__top-line"></div>
+                <div class="container__top-photo">
+                    <img src="lich.png" alt="Màn hình lịch" title="Quản lý lịch GinoNote">
+                </div>
+                <div class="container__top-body">
+                    <div class="container__wrap-h2">
+                        <h2 class="container__h2" data-i18n="box2_title">Quản lý thời gian hiệu quả</h2>
+                        <div class="container__h2-description" data-i18n="box2_desc">
+                            Tích hợp lịch thông minh, xem các ghi chú và sự kiện theo ngày tháng.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container__bottom">
+                <div class="container__bottom-wrap">
+                    <div class="container__bottom-icon">
+                        <i class="material-icons">calendar_month</i>
+                    </div>
+                    <p class="container__bottom-text" data-i18n="box2_detail">Không bao giờ bỏ lỡ deadline hay sự kiện quan trọng. Chế độ xem lịch giúp bạn bao quát toàn bộ kế hoạch trong tháng chỉ với một ánh nhìn.</p>
+                </div>
+            </div>
+        </div>
 
-<h2>Trách nhiệm của Người dùng</h2>
-<p>Một số chức năng của Ứng dụng yêu cầu kết nối internet đang hoạt động. Nhà cung cấp Dịch vụ không chịu trách nhiệm nếu Ứng dụng không hoạt động do thiếu kết nối internet hoặc bạn đã hết dung lượng dữ liệu mạng.</p>
+        <div class="container">
+            <div class="container__top has-image">
+                <div class="container__top-line"></div>
+                <div class="container__top-photo">
+                    <img src="thongke.jpg" alt="Màn hình thống kê" title="Thống kê thói quen ghi chú">
+                </div>
+                <div class="container__top-body">
+                    <div class="container__wrap-h2">
+                        <h2 class="container__h2" data-i18n="box3_title">Thống kê thói quen ghi chú</h2>
+                        <div class="container__h2-description" data-i18n="box3_desc">
+                            Theo dõi sự tiến bộ và thói quen làm việc của bạn qua các biểu đồ trực quan.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container__bottom">
+                <div class="container__bottom-wrap">
+                    <div class="container__bottom-icon">
+                        <i class="material-icons">insights</i>
+                    </div>
+                    <p class="container__bottom-text" data-i18n="box3_detail">Ứng dụng tự động phân tích và đưa ra thống kê về số lượng ghi chú, thẻ tag sử dụng nhiều nhất để bạn tối ưu hóa hệ thống thông tin cá nhân.</p>
+                </div>
+            </div>
+        </div>
 
-<h2>Thay đổi Điều khoản và Điều kiện</h2>
-<p>Các điều khoản và điều kiện này có hiệu lực từ ngày 06-02-2026. Chúng tôi có thể định kỳ cập nhật Điều khoản và Điều kiện và bạn nên thường xuyên xem lại trang này.</p>
+        <div class="container">
+            <div class="container__top has-image">
+                <div class="container__top-line"></div>
+                <div class="container__top-photo">
+                    <img src="dongbo.png" alt="Màn hình đồng bộ" title="Đồng bộ hóa đám mây">
+                </div>
+                <div class="container__top-body">
+                    <div class="container__wrap-h2">
+                        <h2 class="container__h2" data-i18n="box4_title">Đồng bộ hóa đám mây an toàn</h2>
+                        <div class="container__h2-description" data-i18n="box4_desc">
+                            Dữ liệu của bạn luôn an toàn và có thể truy cập từ mọi thiết bị.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container__bottom">
+                <div class="container__bottom-wrap">
+                    <div class="container__bottom-icon">
+                        <i class="material-icons">cloud_sync</i>
+                    </div>
+                    <p class="container__bottom-text" data-i18n="box4_detail">Cơ chế đồng bộ hóa mã hóa hai chiều bảo vệ quyền riêng tư tuyệt đối. Chuyển đổi thiết bị mượt mà mà không lo mất dữ liệu.</p>
+                </div>
+            </div>
+        </div>
 
-<h2>Liên hệ với Chúng tôi</h2>
-<p>Nếu bạn có bất kỳ câu hỏi nào, vui lòng liên hệ với Nhà cung cấp Dịch vụ tại <a href="mailto:lathedo.taichi@gmail.com">lathedo.taichi@gmail.com</a>.</p>
+        <div class="container">
+            <div class="container__top">
+                <div class="container__top-line"></div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                </div>
+                <div class="container__top-body">
+                    <div class="container__wrap-h2">
+                        <h2 class="container__h2" data-i18n="box5_title">Khám phá sức mạnh của GinoNote</h2>
+                        <div class="container__h2-description" data-i18n="box5_desc">
+                            Xem video ngắn để nắm bắt cách ứng dụng có thể thay đổi cách bạn tổ chức cuộc sống.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="advantages-grid">
+            <div class="extra__section">
+                <div class="extra__section-icon">
+                    <i class="material-icons">memory</i>
+                </div>
+                <div class="extra__section-text">
+                    <h2 class="extra__section-text-h2" data-i18n="adv1_title">Tiết kiệm bộ nhớ</h2>
+                    <p class="extra__section-text-description" data-i18n="adv1_desc">Được tối ưu hóa tối đa cho hệ điều hành Android, hoạt động mượt mà và tiêu tốn cực ít dung lượng cài đặt và RAM.</p>
+                </div>
+            </div>
+            
+            <div class="extra__section">
+                <div class="extra__section-icon">
+                    <i class="material-icons">offline_bolt</i>
+                </div>
+                <div class="extra__section-text">
+                    <h2 class="extra__section-text-h2" data-i18n="adv2_title">Hoạt động ngoại tuyến</h2>
+                    <p class="extra__section-text-description" data-i18n="adv2_desc">Viết và chỉnh sửa ghi chú mọi lúc, mọi nơi ngay cả khi không có kết nối Internet. Dữ liệu sẽ tự đồng bộ khi có mạng.</p>
+                </div>
+            </div>
+
+            <div class="extra__section">
+                <div class="extra__section-icon">
+                    <i class="material-icons">security</i>
+                </div>
+                <div class="extra__section-text">
+                    <h2 class="extra__section-text-h2" data-i18n="adv3_title">Bảo mật riêng tư</h2>
+                    <p class="extra__section-text-description" data-i18n="adv3_desc">Tùy chọn khóa ứng dụng bằng vân tay hoặc mã PIN, đảm bảo những ghi chép cá nhân của bạn không bị dòm ngó.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="super__free">
+            <div class="super__free-text">
+                <h3 class="super__free-h3" data-i18n="free_title">Hoàn toàn miễn phí!</h3>
+                <p class="super__free-description" data-i18n="free_desc">
+                    Chúng tôi tin rằng việc ghi chép mạch lạc là chìa khóa mở ra tiềm năng cá nhân và sự sáng tạo. Những công cụ hữu ích nhất nên được tiếp cận bởi tất cả mọi người. Hãy tải xuống và trải nghiệm sự ngăn nắp ngay hôm nay.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 GinoNote. All rights reserved.</p>
+            <a href="policy_vi.html" id="link-policy" data-i18n="policy">Chính sách bảo mật</a> | 
+            <a href="terms_vi.html" id="link-terms" data-i18n="terms">Điều khoản sử dụng</a>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            "vi": {
+                "slogan": "Khắc ghi chú vào trí nhớ",
+                "download": "Tải ứng dụng từ Play Store",
+                "box1_title": "Ghi chú nhanh chóng, trực quan",
+                "box1_desc": "Giao diện sạch sẽ giúp bạn tập trung hoàn toàn vào luồng suy nghĩ.",
+                "box1_detail": "Hỗ trợ định dạng văn bản phong phú, chèn hình ảnh và danh sách công việc một cách dễ dàng. Mọi ý tưởng đều được lưu giữ tức thì.",
+                "box1_strong": "Mọi thứ bắt đầu từ một dòng ghi chú!",
+                "box2_title": "Quản lý thời gian hiệu quả",
+                "box2_desc": "Tích hợp lịch thông minh, xem các ghi chú và sự kiện theo ngày tháng.",
+                "box2_detail": "Không bao giờ bỏ lỡ deadline hay sự kiện quan trọng. Chế độ xem lịch giúp bạn bao quát toàn bộ kế hoạch trong tháng chỉ với một ánh nhìn.",
+                "box3_title": "Thống kê thói quen ghi chú",
+                "box3_desc": "Theo dõi sự tiến bộ và thói quen làm việc của bạn qua các biểu đồ trực quan.",
+                "box3_detail": "Ứng dụng tự động phân tích và đưa ra thống kê về số lượng ghi chú, thẻ tag sử dụng nhiều nhất để bạn tối ưu hóa hệ thống thông tin cá nhân.",
+                "box4_title": "Đồng bộ hóa đám mây an toàn",
+                "box4_desc": "Dữ liệu của bạn luôn an toàn và có thể truy cập từ mọi thiết bị.",
+                "box4_detail": "Cơ chế đồng bộ hóa mã hóa hai chiều bảo vệ quyền riêng tư tuyệt đối. Chuyển đổi thiết bị mượt mà mà không lo mất dữ liệu.",
+                "box5_title": "Khám phá sức mạnh của GinoNote",
+                "box5_desc": "Xem video ngắn để nắm bắt cách ứng dụng có thể thay đổi cách bạn tổ chức cuộc sống.",
+                "adv1_title": "Tiết kiệm bộ nhớ",
+                "adv1_desc": "Được tối ưu hóa tối đa cho hệ điều hành Android, hoạt động mượt mà và tiêu tốn cực ít dung lượng cài đặt và RAM.",
+                "adv2_title": "Hoạt động ngoại tuyến",
+                "adv2_desc": "Viết và chỉnh sửa ghi chú mọi lúc, mọi nơi ngay cả khi không có kết nối Internet. Dữ liệu sẽ tự đồng bộ khi có mạng.",
+                "adv3_title": "Bảo mật riêng tư",
+                "adv3_desc": "Tùy chọn khóa ứng dụng bằng vân tay hoặc mã PIN, đảm bảo những ghi chép cá nhân của bạn không bị dòm ngó.",
+                "free_title": "Hoàn toàn miễn phí!",
+                "free_desc": "Chúng tôi tin rằng việc ghi chép mạch lạc là chìa khóa mở ra tiềm năng cá nhân và sự sáng tạo. Những công cụ hữu ích nhất nên được tiếp cận bởi tất cả mọi người. Hãy tải xuống và trải nghiệm sự ngăn nắp ngay hôm nay.",
+                "policy": "Chính sách bảo mật",
+                "terms": "Điều khoản sử dụng"
+            },
+            "en": {
+                "slogan": "Carve notes into memory",
+                "download": "Download on Google Play",
+                "box1_title": "Fast and Intuitive Notes",
+                "box1_desc": "A clean interface helps you focus entirely on your train of thought.",
+                "box1_detail": "Supports rich text formatting, inserting images, and to-do lists easily. Every idea is captured instantly.",
+                "box1_strong": "Everything starts with a single note!",
+                "box2_title": "Effective Time Management",
+                "box2_desc": "Smart calendar integration, view notes and events by date.",
+                "box2_detail": "Never miss a deadline or important event. The calendar view helps you oversee your entire monthly plan at a glance.",
+                "box3_title": "Note-taking Habit Statistics",
+                "box3_desc": "Track your progress and workflow through visual charts.",
+                "box3_detail": "The app automatically analyzes and provides statistics on the number of notes and most used tags to optimize your personal info system.",
+                "box4_title": "Secure Cloud Sync",
+                "box4_desc": "Your data is always safe and accessible from any device.",
+                "box4_detail": "Two-way encrypted sync mechanism strictly protects your privacy. Switch devices smoothly without fear of data loss.",
+                "box5_title": "Discover the Power of GinoNote",
+                "box5_desc": "Watch a short video to understand how the app can change the way you organize your life.",
+                "adv1_title": "Economized Memory Usage",
+                "adv1_desc": "Highly optimized for the Android OS, runs smoothly while consuming very little installation space and RAM.",
+                "adv2_title": "Offline Capabilities",
+                "adv2_desc": "Write and edit notes anytime, anywhere even without an Internet connection. Data will automatically sync when online.",
+                "adv3_title": "Privacy Security",
+                "adv3_desc": "Option to lock the app with a fingerprint or PIN code, ensuring your personal notes are kept away from prying eyes.",
+                "free_title": "Completely Free!",
+                "free_desc": "We believe that coherent note-taking is the key to unlocking personal potential and creativity. The most useful tools should be accessible to everyone. Download and experience tidiness today.",
+                "policy": "Privacy Policy",
+                "terms": "Terms of Use"
+            }
+        };
+
+        let currentLang = "vi"; 
+
+        function toggleLanguage() {
+            currentLang = currentLang === "vi" ? "en" : "vi";
+            
+            const elements = document.querySelectorAll("[data-i18n]");
+            
+            elements.forEach(element => {
+                const key = element.getAttribute("data-i18n");
+                if (translations[currentLang][key]) {
+                    element.innerHTML = translations[currentLang][key];
+                }
+            });
+
+            document.getElementById("link-policy").href = currentLang === "vi" ? "policy_vi.html" : "policy_en.html";
+            document.getElementById("link-terms").href = currentLang === "vi" ? "terms_vi.html" : "terms_en.html";
+
+            document.getElementById("langToggle").innerText = currentLang === "vi" ? "VI / EN" : "EN / VI";
+        }
+    </script>
 </body>
 </html>
