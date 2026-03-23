@@ -127,7 +127,6 @@
         /* --- BẮT ĐẦU: CSS CHO CÁC KHỐI CONTENT (.container) --- */
         /* ========================================================= */
 
-        /* CSS gốc cho các khối .container bình thường (chỉ có 1 ảnh) */
         .container {
             background: var(--card-bg);
             border-radius: 12px;
@@ -144,7 +143,6 @@
             width: 100%;
         }
 
-        /* Mặc định trên Mobile */
         .container__top-photo {
             text-align: center;
             background-color: #f8fafe;
@@ -202,7 +200,6 @@
             line-height: 1.6;
         }
 
-        /* Màn hình lớn cho .container thường (1 ảnh) */
         @media (min-width: 768px) {
             .container__top.has-image {
                 display: flex;
@@ -226,11 +223,7 @@
             }
         }
 
-        /* ================================================================= */
-        /* --- CSS RIÊNG CHO PHẦN ACTIVE RECALL (2 ẢNH, CHIA 3 CỘT) --- */
-        /* ================================================================= */
-
-        /* 1. MẶC ĐỊNH CHO MOBILE */
+        /* --- CSS RIÊNG CHO PHẦN ACTIVE RECALL --- */
         .active-recall-container .container__top.has-image {
             display: flex;
             flex-direction: column;
@@ -245,7 +238,6 @@
             align-items: center;
         }
 
-        /* Định dạng riêng cho 2 khối chứa ảnh trên mobile */
         .active-recall-container .container__top-part:not(.container__top-body) {
             background-color: #f8fafe;
             padding: 20px;
@@ -262,7 +254,6 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
-        /* Định dạng cho phần chữ trên mobile */
         .active-recall-container .container__top-body {
             padding: 20px;
             text-align: left;
@@ -270,7 +261,6 @@
             box-sizing: border-box;
         }
 
-        /* 2. MÀN HÌNH LỚN (PC/TABLET - Dàn ngang 3 cột bằng nhau) */
         @media (min-width: 768px) {
             .active-recall-container .container__top.has-image {
                 flex-direction: row;
@@ -481,30 +471,46 @@
                 </div>
             </div>
         </div>
+
         <div class="container active-recall-container">
             <div class="container__top-line"></div>
             <div class="container__top has-image">
                 <div class="container__top-part">
-                    <img src="test1.png" alt="Màn hình ôn tập 1" title="Ôn tập chủ động">
+                    <img src="test1.png" alt="Màn hình điền từ" title="Ôn tập điền từ">
                 </div>
                 <div class="container__top-part">
-                    <img src="test.png" alt="Màn hình ôn tập 2" title="Ôn tập chủ động">
+                    <img src="test.png" alt="Màn hình kết quả" title="Kết quả bài làm">
                 </div>
                 <div class="container__top-part container__top-body">
                     <div class="container__wrap-h2">
-                        <h2 class="container__h2" data-i18n="box4_title">Ôn tập theo phương pháp Active Recall</h2>
-                        <div class="container__h2-description" data-i18n="box4_desc">
-                            Chủ động hồi tưởng lại kiến thức.
+                        <h2 class="container__h2" data-i18n="recall_title">Hệ thống Ôn tập Chủ động</h2>
+                        <div class="container__h2-description" data-i18n="recall_desc">
+                            GinoNote thay đổi hoàn toàn thói quen đọc lại thụ động bằng cách kết hợp sức mạnh của phương pháp Active Recall (Chủ động gọi nhớ) và Spaced Repetition (Lặp lại ngắt quãng). Hệ thống yêu cầu não bộ tự truy xuất các từ khóa bị ẩn, sau đó cung cấp phản hồi lỗi sai ngay lập tức và tự động tính toán thời điểm ôn tập hoàn hảo cho lần tiếp theo, giúp bạn ghi nhớ dài hạn với ít nỗ lực nhất.
                         </div>
                     </div>
                 </div>
             </div>
             <div class="container__bottom">
-                <div class="container__bottom-wrap">
-                    <div class="container__bottom-icon">
-                        <i class="material-icons">cloud_sync</i>
-                    </div>
-                    <p class="container__bottom-text" data-i18n="box4_detail">Thông qua bài kiểm tra điền từ ta chủ động hồi tưởng lại kiến thức</p>
+                <div class="container__bottom-text">
+                    <p style="margin-top: 0;"><strong data-i18n="recall_list_intro">Chi tiết Chức năng & Cách thức Hoạt động:</strong></p>
+                    <ul style="list-style-type: none; padding-left: 0; margin-bottom: 0;">
+                        <li style="margin-bottom: 12px;">
+                            <i class="material-icons" style="vertical-align: middle; color: var(--primary-color);">help_outline</i> 
+                            <span data-i18n="recall_help"> Nằm ngay cạnh các ô trống. Khi bạn thực sự "bí" từ, nhấn vào biểu tượng này để nhận một gợi ý nhỏ. Nó giúp bạn gỡ rối mà không làm mất đi hoàn toàn nỗ lực tự hồi tưởng.</span>
+                        </li>
+                        <li style="margin-bottom: 12px;">
+                            <i class="material-icons" style="vertical-align: middle; color: var(--primary-color);">fact_check</i> 
+                            <span data-i18n="recall_check">Nút "Kiểm tra đáp án": Hoàn tất quá trình hồi tưởng. Chạm vào nút này để hệ thống khóa đáp án của bạn, tiến hành đối chiếu với bản gốc và đưa ra kết quả ngay lập tức.</span>
+                        </li>
+                        <li style="margin-bottom: 12px;">
+                            <i class="material-icons" style="vertical-align: middle; color: var(--primary-color);">spellcheck</i> 
+                            <span data-i18n="recall_detail">Chi tiết bài làm (Sửa lỗi trực quan): Hệ thống chấm điểm phần trăm (%) mức độ hoàn thành. Các từ đúng được in xanh lá, các từ sai hoặc bỏ trống bị bôi đỏ, gạch ngang và trỏ thẳng mũi tên sang đáp án chính xác. Ngoài ra còn tinh năng Mercy giúp bạn sửa lại đáp án nếu bị lỗi đánh máy, khi bấm vào từ bôi đỏ.</span>
+                        </li>
+                        <li style="margin-bottom: 0;">
+                            <i class="material-icons" style="vertical-align: middle; color: var(--primary-color);">thumbs_up_down</i> 
+                            <span data-i18n="recall_diff">Đánh giá độ khó (Again / Hard / Good / Easy): Thuật toán sẽ căn cứ vào kết quả bài làm của bạn và đưa ra gợi ý cho bạn lựa chọn.</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -663,15 +669,19 @@
                 "icon_history": "Cho phép bạn truy cập vào lịch sử ôn tập của bản ghi chú. Tính năng này giúp bạn dễ dàng theo dõi ngày ôn tập tiếp theo và danh sách lịch sử kết quả ôn tập.",
                 "icon_edit": "Chuyển đổi nhanh từ chế độ xem (chỉ đọc) sang chế độ soạn thảo. Nhấn vào biểu tượng này để mở khóa trang viết, cho phép bạn bắt đầu chỉnh sửa văn bản, thêm thẻ phân loại hoặc thay đổi nội dung ghi chú.",
                 "icon_play": "Khởi động chế độ ôn tập tập trung. Khi nhấn vào, hệ thống sẽ chuyển sang giao diện thực hành (flashcard), bắt đầu ẩn đi các từ khóa được bọc trong ngoặc nhọn {...} để bạn chính thức kiểm tra lại trí nhớ của mình.",
+                "recall_title": "Hệ thống Ôn tập Chủ động",
+                "recall_desc": "GinoNote thay đổi hoàn toàn thói quen đọc lại thụ động bằng cách kết hợp sức mạnh của phương pháp Active Recall (Chủ động gọi nhớ) và Spaced Repetition (Lặp lại ngắt quãng). Hệ thống yêu cầu não bộ tự truy xuất các từ khóa bị ẩn, sau đó cung cấp phản hồi lỗi sai ngay lập tức và tự động tính toán thời điểm ôn tập hoàn hảo cho lần tiếp theo, giúp bạn ghi nhớ dài hạn với ít nỗ lực nhất.",
+                "recall_list_intro": "Chi tiết Chức năng & Cách thức Hoạt động:",
+                "recall_help": "Nằm ngay cạnh các ô trống. Khi bạn thực sự \"bí\" từ, nhấn vào biểu tượng này để nhận một gợi ý nhỏ. Nó giúp bạn gỡ rối mà không làm mất đi hoàn toàn nỗ lực tự hồi tưởng.",
+                "recall_check": "Nút \"Kiểm tra đáp án\": Hoàn tất quá trình hồi tưởng. Chạm vào nút này để hệ thống khóa đáp án của bạn, tiến hành đối chiếu với bản gốc và đưa ra kết quả ngay lập tức.",
+                "recall_detail": "Chi tiết bài làm (Sửa lỗi trực quan): Hệ thống chấm điểm phần trăm (%) mức độ hoàn thành. Các từ đúng được in xanh lá, các từ sai hoặc bỏ trống bị bôi đỏ, gạch ngang và trỏ thẳng mũi tên sang đáp án chính xác. Ngoài ra còn tinh năng Mercy giúp bạn sửa lại đáp án nếu bị lỗi đánh máy, khi bấm vào từ bôi đỏ.",
+                "recall_diff": "Đánh giá độ khó (Again / Hard / Good / Easy): Thuật toán sẽ căn cứ vào kết quả bài làm của bạn và đưa ra gợi ý cho bạn lựa chọn.",
                 "box2_title": "Quản lý thời gian hiệu quả",
                 "box2_desc": "Tích hợp lịch thông minh, xem các ghi chú và sự kiện theo ngày tháng.",
                 "box2_detail": "Không bao giờ bỏ lỡ deadline hay sự kiện quan trọng. Chế độ xem lịch giúp bạn bao quát toàn bộ kế hoạch trong tháng chỉ với một ánh nhìn.",
                 "box3_title": "Thống kê thói quen ghi chú",
                 "box3_desc": "Theo dõi sự tiến bộ và thói quen làm việc của bạn qua các biểu đồ trực quan.",
                 "box3_detail": "Ứng dụng tự động phân tích và đưa ra thống kê về số lượng ghi chú, thẻ tag sử dụng nhiều nhất để bạn tối ưu hóa hệ thống thông tin cá nhân.",
-                "box4_title": "Ôn tập theo phương pháp Active Recall",
-                "box4_desc": "Chủ động hồi tưởng lại kiến thức.",
-                "box4_detail": "Thông qua bài kiểm tra điền từ ta chủ động hồi tưởng lại kiến thức",
                 "box5_title_cloud": "Đồng bộ hóa đám mây an toàn",
                 "box5_desc_cloud": "Dữ liệu của bạn luôn an toàn và có thể truy cập từ mọi thiết bị.",
                 "box5_detail_cloud": "Cơ chế đồng bộ hóa mã hóa hai chiều bảo vệ quyền riêng tư tuyệt đối. Chuyển đổi thiết bị mượt mà mà không lo mất dữ liệu.",
@@ -708,15 +718,19 @@
                 "icon_history": "Allows you to access the note's review history. This feature helps you easily track the next review date and the history of your review results.",
                 "icon_edit": "Quickly switch from view mode (read-only) to editing mode. Tap this icon to unlock the writing page, allowing you to start editing text, adding tags, or changing the note content.",
                 "icon_play": "Start the focused review mode. When tapped, the system will switch to the practice interface (flashcard), starting to hide the keywords wrapped in curly brackets {...} so you can officially test your memory.",
+                "recall_title": "Active Review System",
+                "recall_desc": "GinoNote completely changes the habit of passive rereading by combining the power of Active Recall and Spaced Repetition. The system requires your brain to retrieve hidden keywords, then provides immediate error feedback and automatically calculates the perfect review time for the next session, helping you achieve long-term retention with minimal effort.",
+                "recall_list_intro": "Function Details & How It Works:",
+                "recall_help": " Located right next to the blanks. When you are truly stuck on a word, tap this icon to get a small hint. It helps you get unstuck without completely losing the effort of self-retrieval.",
+                "recall_check": "\"Check Answer\" Button: Completes the recall process. Tap this button for the system to lock your answer, compare it with the original, and provide immediate results.",
+                "recall_detail": "Task Details (Visual Error Correction): The system scores the completion percentage (%). Correct words are printed in green, incorrect or skipped words are highlighted in red, crossed out, and pointed directly with an arrow to the exact answer. In addition, there is a Mercy feature that helps you correct typo errors by tapping the red highlighted word.",
+                "recall_diff": "Difficulty Rating (Again / Hard / Good / Easy): The algorithm will base on your test results and provide suggestions for your selection.",
                 "box2_title": "Effective Time Management",
                 "box2_desc": "Smart calendar integration, view notes and events by date.",
                 "box2_detail": "Never miss a deadline or important event. The calendar view helps you oversee your entire monthly plan at a glance.",
                 "box3_title": "Note-taking Habit Statistics",
                 "box3_desc": "Track your progress and workflow through visual charts.",
                 "box3_detail": "The app automatically analyzes and provides statistics on the number of notes and most used tags to optimize your personal info system.",
-                "box4_title": "Active Recall review method",
-                "box4_desc": "Actively retrieve knowledge.",
-                "box4_detail": "Through fill-in-the-blank tests, we actively recall knowledge.",
                 "box5_title_cloud": "Secure Cloud Sync",
                 "box5_desc_cloud": "Your data is always safe and accessible from any device.",
                 "box5_detail_cloud": "Two-way encrypted sync mechanism strictly protects your privacy. Switch devices smoothly without fear of data loss.",
