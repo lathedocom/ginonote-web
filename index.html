@@ -284,115 +284,6 @@
                 justify-content: center;
             }
         }
-
-        /* ========================================================= */
-        /* --- KẾT THÚC: CSS CHO CÁC KHỐI CONTENT --- */
-        /* ========================================================= */
-
-        /* --- Phần 3: Ưu điểm --- */
-        .advantages-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        @media (min-width: 600px) {
-            .advantages-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .extra__section {
-            background: var(--card-bg);
-            padding: 24px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .extra__section:hover {
-            transform: translateY(-5px);
-        }
-
-        .extra__section-icon i {
-            font-size: 48px;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        .extra__section-text-h2 {
-            font-size: 18px;
-            margin: 0 0 10px 0;
-        }
-
-        .extra__section-text-description {
-            font-size: 14px;
-            color: var(--text-light);
-            line-height: 1.5;
-        }
-
-        /* --- Phần 4: Kêu gọi hành động --- */
-        .super__free {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: white;
-            padding: 40px 20px;
-            border-radius: 12px;
-            text-align: center;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 12px rgba(14, 75, 117, 0.4);
-        }
-
-        .super__free-h3 {
-            font-size: 28px;
-            margin: 0 0 15px 0;
-        }
-
-        .super__free-description {
-            font-size: 16px;
-            line-height: 1.6;
-            max-width: 600px;
-            margin: 0 auto;
-            opacity: 0.9;
-        }
-
-        /* --- Phần 5: Footer --- */
-        .footer {
-            text-align: center;
-            padding: 20px;
-            border-top: 1px solid #ddd;
-            font-size: 14px;
-        }
-
-        .footer a {
-            color: var(--primary-color);
-            text-decoration: none;
-            margin: 0 10px;
-            font-weight: 500;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Video Iframe */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            width: 100%;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
     </style>
 </head>
 <body>
@@ -594,82 +485,39 @@
             <div class="container__top has-image">
                 <div class="container__top-line"></div>
                 <div class="container__top-photo">
-                    <img src="dongbo.png" alt="Màn hình đồng bộ" title="Đồng bộ hóa đám mây">
+                    <img src="dongbo.png" alt="Màn hình đồng bộ" title="Đồng bộ hóa dữ liệu">
                 </div>
                 <div class="container__top-body">
                     <div class="container__wrap-h2">
-                        <h2 class="container__h2" data-i18n="box5_title_cloud">Đồng bộ hóa đám mây an toàn</h2>
-                        <div class="container__h2-description" data-i18n="box5_desc_cloud">
-                            Dữ liệu của bạn luôn an toàn và có thể truy cập từ mọi thiết bị.
+                        <h2 class="container__h2" data-i18n="sync_title">Kết Nối Tri Thức Không Giới Hạn</h2>
+                        <div class="container__h2-description" data-i18n="sync_desc">
+                            GinoNote mang đến giải pháp quản lý dữ liệu toàn diện, giúp bạn xóa tan nỗi lo mất mát thông tin khi thay đổi thiết bị. Đồng bộ hóa tức thì và hệ thống xuất tệp tin độc quyền, giúp việc chia sẻ kho tàng kiến thức giữa cộng đồng người dùng trở nên dễ dàng và chuyên nghiệp hơn bao giờ hết.
                         </div>
                     </div>
                 </div>
             </div>
             <div class="container__bottom">
                 <div class="container__bottom-text">
-                    <div class="container__bottom-wrap">
-                        <div class="container__bottom-icon">
-                            <i class="material-icons">cloud_sync</i>
-                        </div>
-                        <p class="container__bottom-text" data-i18n="box5_detail_cloud">Cơ chế đồng bộ hóa mã hóa hai chiều bảo vệ quyền riêng tư tuyệt đối. Chuyển đổi thiết bị mượt mà mà không lo mất dữ liệu.</p>
-                    </div>
+                    <p style="margin-top: 0;"><strong data-i18n="sync_list_intro">Chi tiết Chức năng & Cách thức Hoạt động:</strong></p>
+                    <ul style="list-style-type: none; padding-left: 0; margin-bottom: 0;">
+                        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">cloud_sync</i> 
+                            <span data-i18n="sync_drive"><strong>Đồng bộ hóa Google Drive an toàn:</strong> Bạn có thể đăng nhập trực tiếp bằng tài khoản Google để biến Drive thành kho lưu trữ đám mây riêng cho các ghi chú của mình. Khi bật chế độ Tự động đồng bộ, mọi chỉnh sửa trên điện thoại sẽ được sao lưu ngay lập tức lên đám mây, đảm bảo dữ liệu luôn nhất quán trên mọi thiết bị bạn sở hữu.</span>
+                        </li>
+                        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">share</i> 
+                            <span data-i18n="sync_share"><strong>Chia sẻ dữ liệu qua tệp tin .gino:</strong> Đây là tính năng mạnh mẽ cho phép bạn đóng gói toàn bộ nội dung ghi chú, bao gồm cả hình ảnh minh họa, thành một tệp tin duy nhất có định dạng .gino. Bạn có thể gửi tệp này cho bạn bè hoặc cộng đồng để họ Nhập dữ liệu vào ứng dụng GinoNote của mình, giúp việc trao đổi tài liệu học tập và các bộ ghi chú diễn ra vô cùng nhanh chóng.</span>
+                        </li>
+                        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">filter_list</i> 
+                            <span data-i18n="sync_filter"><strong>Bộ lọc đồng bộ thông minh:</strong> Thay vì đồng bộ tất cả, GinoNote cho phép bạn Chọn thẻ đồng bộ để chỉ đưa những nội dung quan trọng lên Drive. Những ghi chú mang tính riêng tư không được gắn thẻ sẽ chỉ lưu trữ cục bộ trên máy, giúp bạn kiểm soát hoàn toàn việc chia sẻ và lưu trữ dữ liệu cá nhân.</span>
+                        </li>
+                        <li style="margin-bottom: 0; display: flex; align-items: flex-start;">
+                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">update</i> 
+                            <span data-i18n="sync_status"><strong>Quản lý trạng thái sao lưu:</strong> Hệ thống hiển thị rõ ràng thời gian Lần cuối đồng bộ thành công, giúp bạn kiểm soát được độ tươi mới của dữ liệu trên đám mây. Trong trường hợp cần thiết, nút Đồng bộ ngay cho phép bạn chủ động cập nhật dữ liệu thủ công chỉ với một lần chạm.</span>
+                        </li>
+                    </ul>
                 </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="container__top">
-                <div class="container__top-line"></div>
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-                </div>
-                <div class="container__top-body">
-                    <div class="container__wrap-h2">
-                        <h2 class="container__h2" data-i18n="box5_title">Khám phá sức mạnh của GinoNote</h2>
-                        <div class="container__h2-description" data-i18n="box5_desc">
-                            Xem video ngắn để nắm bắt cách ứng dụng có thể thay đổi cách bạn tổ chức cuộc sống.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="advantages-grid">
-            <div class="extra__section">
-                <div class="extra__section-icon">
-                    <i class="material-icons">psychology</i>
-                </div>
-                <div class="extra__section-text">
-                    <h2 class="extra__section-text-h2" data-i18n="adv4_title">Tối ưu ghi nhớ với Spaced Repetition và Active Recall</h2>
-                    <p class="extra__section-text-description" data-i18n="adv4_desc">Khắc sâu kiến thức vào trí nhớ dài hạn nhờ sự kết hợp khoa học giữa phương pháp chủ động gợi nhớ (Active Recall) và lặp lại ngắt quãng (Spaced Repetition). Ứng dụng tự động phân tích và lên lịch ôn tập vào đúng thời điểm bạn chuẩn bị quên, giúp bạn tiết kiệm tối đa thời gian học mà vẫn đạt hiệu quả cao nhất.</p>
-                </div>
-            </div>
-            <div class="extra__section">
-                <div class="extra__section-icon">
-                    <i class="material-icons">insert_chart</i>
-                </div>
-                <div class="extra__section-text">
-                    <h2 class="extra__section-text-h2" data-i18n="adv5_title">Thống kê thành tựu và tính toán lịch ôn tập thông minh</h2>
-                    <p class="extra__section-text-description" data-i18n="adv5_desc">Theo dõi sát sao tiến độ của bản thân thông qua hệ thống thống kê trực quan về những ghi chú bạn đã ôn tập thành công. Hệ thống còn tự động dự báo và tính toán chính xác khối lượng bài cần ôn trong tương lai, giúp bạn luôn duy trì động lực và làm chủ kế hoạch học tập mỗi ngày.</p>
-                </div>
-            </div>
-            <div class="extra__section">
-                <div class="extra__section-icon">
-                    <i class="material-icons">folder_shared</i>
-                </div>
-                <div class="extra__section-text">
-                    <h2 class="extra__section-text-h2" data-i18n="adv6_title">Dễ dàng chia sẻ tài liệu qua định dạng file .gino</h2>
-                    <p class="extra__section-text-description" data-i18n="adv6_desc">Đóng gói và chia sẻ toàn bộ kho tàng kiến thức của bạn với bạn bè chỉ qua một thao tác xuất tệp tin .gino độc quyền. Tính năng này giúp việc trao đổi các bộ thẻ ghi chú trở nên vô cùng tiện lợi, nhanh chóng và hoàn toàn có thể sử dụng ngoại tuyến không cần phụ thuộc vào máy chủ.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="super__free">
-            <div class="super__free-text">
-                <h3 class="super__free-h3" data-i18n="free_title">Sẵn sàng khắc ghi chú vào trí nhớ?</h3>
-                <p class="super__free-description" data-i18n="free_desc">
-                    Đừng chỉ ghi chép rồi để đó. Hãy để GinoNote giúp bạn chuyển hóa thông tin thành tri thức lưu trữ dài hạn. Việc ứng dụng hệ thống khoa học Active Recall và Spaced Repetition không chỉ là một phương pháp học tập, mà là khoản đầu tư bền vững nhất cho nền tảng tư duy của bạn. Tải GinoNote và bắt đầu làm chủ trí nhớ ngay hôm nay!
-                </p>
             </div>
         </div>
 
@@ -716,23 +564,15 @@
                 "stats_how": "Màn hình hoạt động bằng cách tự động tổng hợp dữ liệu từ các hành động thực tế của người dùng.",
                 "stats_metrics": "Đếm tổng lượng Ghi chú bạn đã tạo, tính toán số lượng ghi chú cần ôn tập, và theo dõi hiệu suất ôn tập (số Lượt ôn tập và trung bình Kết quả kiểm tra).",
                 "stats_visual": "Trực quan hóa tiến độ Ghi nhớ, cho biết có bao nhiêu ghi chú \"Đang ôn\" và bao nhiêu ghi chú \"Đã thuộc\" trong khoảng thời gian.",
-                "box3_title": "Thống kê thói quen ghi chú",
-                "box3_detail": "Ứng dụng tự động phân tích và đưa ra thống kê về số lượng ghi chú, thẻ tag sử dụng nhiều nhất để bạn tối ưu hóa hệ thống thông tin cá nhân.",
-                "box5_title_cloud": "Đồng bộ hóa đám mây an toàn",
-                "box5_desc_cloud": "Dữ liệu của bạn luôn an toàn và có thể truy cập từ mọi thiết bị.",
-                "box5_detail_cloud": "Cơ chế đồng bộ hóa mã hóa hai chiều bảo vệ quyền riêng tư tuyệt đối. Chuyển đổi thiết bị mượt mà mà không lo mất dữ liệu.",
-                "box5_title": "Khám phá sức mạnh của GinoNote",
-                "box5_desc": "Xem video ngắn để nắm bắt cách ứng dụng có thể thay đổi cách bạn tổ chức cuộc sống.",
+                "sync_title": "Kết Nối Tri Thức Không Giới Hạn",
+                "sync_desc": "GinoNote mang đến giải pháp quản lý dữ liệu toàn diện, giúp bạn xóa tan nỗi lo mất mát thông tin khi thay đổi thiết bị. Đồng bộ hóa tức thì và hệ thống xuất tệp tin độc quyền, giúp việc chia sẻ kho tàng kiến thức giữa cộng đồng người dùng trở nên dễ dàng và chuyên nghiệp hơn bao giờ hết.",
+                "sync_list_intro": "Chi tiết Chức năng & Cách thức Hoạt động:",
+                "sync_drive": "<strong>Đồng bộ hóa Google Drive an toàn:</strong> Bạn có thể đăng nhập trực tiếp bằng tài khoản Google để biến Drive thành kho lưu trữ đám mây riêng cho các ghi chú của mình. Khi bật chế độ Tự động đồng bộ, mọi chỉnh sửa trên điện thoại sẽ được sao lưu ngay lập tức lên đám mây, đảm bảo dữ liệu luôn nhất quán trên mọi thiết bị bạn sở hữu.",
+                "sync_share": "<strong>Chia sẻ dữ liệu qua tệp tin .gino:</strong> Đây là tính năng mạnh mẽ cho phép bạn đóng gói toàn bộ nội dung ghi chú, bao gồm cả hình ảnh minh họa, thành một tệp tin duy nhất có định dạng .gino. Bạn có thể gửi tệp này cho bạn bè hoặc cộng đồng để họ Nhập dữ liệu vào ứng dụng GinoNote của mình, giúp việc trao đổi tài liệu học tập và các bộ ghi chú diễn ra vô cùng nhanh chóng.",
+                "sync_filter": "<strong>Bộ lọc đồng bộ thông minh:</strong> Thay vì đồng bộ tất cả, GinoNote cho phép bạn Chọn thẻ đồng bộ để chỉ đưa những nội dung quan trọng lên Drive. Những ghi chú mang tính riêng tư không được gắn thẻ sẽ chỉ lưu trữ cục bộ trên máy, giúp bạn kiểm soát hoàn toàn việc chia sẻ và lưu trữ dữ liệu cá nhân.",
+                "sync_status": "<strong>Quản lý trạng thái sao lưu:</strong> Hệ thống hiển thị rõ ràng thời gian Lần cuối đồng bộ thành công, giúp bạn kiểm soát được độ tươi mới của dữ liệu trên đám mây. Trong trường hợp cần thiết, nút Đồng bộ ngay cho phép bạn chủ động cập nhật dữ liệu thủ công chỉ với một lần chạm.",
                 "policy": "Chính sách bảo mật",
-                "terms": "Điều khoản sử dụng",
-                "adv4_title": "Tối ưu ghi nhớ với Spaced Repetition và Active Recall",
-                "adv4_desc": "Khắc sâu kiến thức vào trí nhớ dài hạn nhờ sự kết hợp khoa học giữa phương pháp chủ động gợi nhớ (Active Recall) và lặp lại ngắt quãng (Spaced Repetition). Ứng dụng tự động phân tích và lên lịch ôn tập vào đúng thời điểm bạn chuẩn bị quên, giúp bạn tiết kiệm tối đa thời gian học mà vẫn đạt hiệu quả cao nhất.",
-                "adv5_title": "Thống kê thành tựu và tính toán lịch ôn tập thông minh",
-                "adv5_desc": "Theo dõi sát sao tiến độ của bản thân thông qua hệ thống thống kê trực quan về những ghi chú bạn đã ôn tập thành công. Hệ thống còn tự động dự báo và tính toán chính xác khối lượng bài cần ôn trong tương lai, giúp bạn luôn duy trì động lực và làm chủ kế hoạch học tập mỗi ngày.",
-                "adv6_title": "Dễ dàng chia sẻ tài liệu qua định dạng file .gino",
-                "adv6_desc": "Đóng gói và chia sẻ toàn bộ kho tàng kiến thức của bạn với bạn bè chỉ qua một thao tác xuất tệp tin .gino độc quyền. Tính năng này giúp việc trao đổi các bộ thẻ ghi chú trở nên vô cùng tiện lợi, nhanh chóng và hoàn toàn có thể sử dụng ngoại tuyến không cần phụ thuộc vào máy chủ.",
-                "free_title": "Sẵn sàng khắc ghi chú vào trí nhớ?",
-                "free_desc": "Đừng chỉ ghi chép rồi để đó. Hãy để GinoNote giúp bạn chuyển hóa thông tin thành tri thức lưu trữ dài hạn. Việc ứng dụng hệ thống khoa học Active Recall và Spaced Repetition không chỉ là một phương pháp học tập, mà là khoản đầu tư bền vững nhất cho nền tảng tư duy của bạn. Tải GinoNote và bắt đầu làm chủ trí nhớ ngay hôm nay!"
+                "terms": "Điều khoản sử dụng"
             },
             "en": {
                 "slogan": "Etch notes into your memory",
@@ -768,22 +608,15 @@
                 "stats_how": "The screen works by automatically aggregating data from actual user actions.",
                 "stats_metrics": "It counts the total number of Notes you have created, calculates the number of notes needing review, and tracks review performance (number of Review Sessions and average Test Results).",
                 "stats_visual": "It visualizes Memorization progress, showing how many notes are \"Learning\" and how many are \"Mastered\" within a period.",
-                "box3_title": "Note-taking Habit Statistics",
-                "box5_title_cloud": "Secure Cloud Sync",
-                "box5_desc_cloud": "Your data is always safe and accessible from any device.",
-                "box5_detail_cloud": "Two-way encrypted sync mechanism strictly protects your privacy. Switch devices smoothly without fear of data loss.",
-                "box5_title": "Discover the Power of GinoNote",
-                "box5_desc": "Watch a short video to understand how the app can change the way you organize your life.",
+                "sync_title": "Unlimited Knowledge Connection",
+                "sync_desc": "GinoNote brings a comprehensive data management solution, helping you eliminate worries about information loss when changing devices. Instant synchronization and a proprietary file export system make sharing knowledge among the user community easier and more professional than ever.",
+                "sync_list_intro": "Function Details & How It Works:",
+                "sync_drive": "<strong>Secure Google Drive Synchronization:</strong> You can log in directly with your Google account to turn Drive into your own private cloud storage for your notes. When Auto-Sync is on, all mobile edits are instantly backed up to the cloud, ensuring data consistency across every device you own.",
+                "sync_share": "<strong>Data Sharing via .gino files:</strong> This powerful feature allows you to pack all note content, including illustrations, into a single file with the .gino extension. You can send this file to friends or the community so they can Import data into their GinoNote app, making the exchange of study materials and note sets incredibly fast.",
+                "sync_filter": "<strong>Smart Sync Filter:</strong> Instead of syncing everything, GinoNote allows you to Select Tags to Sync to only upload important content to Drive. Private notes without tags will remain stored locally on the device, giving you full control over sharing and personal data storage.",
+                "sync_status": "<strong>Backup Status Management:</strong> The system clearly displays the Last Successful Sync time, helping you monitor the freshness of your data in the cloud. When necessary, the Sync Now button allows you to manually update data with just one tap.",
                 "policy": "Privacy Policy",
-                "terms": "Terms of Use",
-                "adv4_title": "Optimize Memorization with Spaced Repetition and Active Recall",
-                "adv4_desc": "Engrave knowledge into your long-term memory through the scientific combination of Active Recall and Spaced Repetition. The app automatically analyzes and schedules your reviews at the exact moment you are about to forget, helping you save time while maximizing your learning efficiency.",
-                "adv5_title": "Achievement Statistics and Smart Review Scheduling",
-                "adv5_desc": "Keep a close eye on your progress through visual statistics of your successfully reviewed notes. The system also automatically forecasts and accurately calculates your upcoming review workload, keeping you motivated and fully in control of your daily study plan.",
-                "adv6_title": "Easy Material Sharing via .gino Files",
-                "adv6_desc": "Package and share your entire wealth of knowledge with friends simply by exporting a proprietary .gino file. This feature makes exchanging flashcard decks incredibly convenient, fast, and fully accessible offline without any server dependency.",
-                "free_title": "Ready to etch notes into your memory?",
-                "free_desc": "Don't let your notes fade into oblivion. Let GinoNote help you transform information into long-term knowledge. Applying the proven science of Active Recall and Spaced Repetition isn't just a study method—it's a sustainable investment in your cognitive power. Download GinoNote and master your memory today!"
+                "terms": "Terms of Use"
             }
         };
 
