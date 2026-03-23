@@ -756,20 +756,21 @@
         };
 
         let currentLang = "vi";
+function toggleLanguage() {
+currentLang = currentLang === "vi" ? "en" : "vi";
 
-        function toggleLanguage() {
-            currentLang = currentLang === "vi" ? "en" : "vi";
-            const elements = document.querySelectorAll("[data-i18n]");
+const elements = document.querySelectorAll("[data-i18n]");
 
-            elements.forEach(element => {
-                const key = element.getAttribute("data-i18n");
-                if (translations[currentLang][key]) {
-                    element.innerHTML = translations[currentLang][key];
-                }
-            });
-
-            document.getElementById("langToggle").innerText = currentLang === "vi" ? "VI / EN" : "EN / VI";
-        }
-    </script>
+elements.forEach(element => {
+const key = element.getAttribute("data-i18n");
+if (translations[currentLang][key]) {
+element.innerHTML = translations[currentLang][key];
+}
+});
+document.getElementById("link-policy").href = currentLang === "vi" ? "policy_vi.html" : "policy_en.html";
+document.getElementById("link-terms").href = currentLang === "vi" ? "terms_vi.html" : "terms_en.html";
+document.getElementById("langToggle").innerText = currentLang === "vi" ? "VI / EN" : "EN / VI";
+}
+</script>
 </body>
 </html>
