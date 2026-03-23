@@ -496,7 +496,7 @@
                     <ul style="list-style-type: none; padding-left: 0; margin-bottom: 0;">
                         <li style="margin-bottom: 12px;">
                             <i class="material-icons" style="vertical-align: middle; color: var(--primary-color);">help_outline</i> 
-                            <span data-i18n="recall_help"> Nằm ngay cạnh các ô trống. Khi bạn thực sự "bí" từ, nhấn vào biểu tượng này để nhận một gợi ý nhỏ. Nó giúp bạn gỡ rối mà không làm mất đi hoàn toàn nỗ lực tự hồi tưởng.</span>
+                            <span data-i18n="recall_help">Icon Dấu hỏi chấm (?) / Trợ giúp: Nằm ngay cạnh các ô trống. Khi bạn thực sự "bí" từ, nhấn vào biểu tượng này để nhận một gợi ý nhỏ. Nó giúp bạn gỡ rối mà không làm mất đi hoàn toàn nỗ lực tự hồi tưởng.</span>
                         </li>
                         <li style="margin-bottom: 12px;">
                             <i class="material-icons" style="vertical-align: middle; color: var(--primary-color);">fact_check</i> 
@@ -519,23 +519,37 @@
             <div class="container__top has-image">
                 <div class="container__top-line"></div>
                 <div class="container__top-photo">
-                    <img src="lich.png" alt="Màn hình lịch" title="Quản lý lịch GinoNote">
+                    <img src="lich.png" alt="Màn hình lịch" title="Nhật ký học tập GinoNote">
                 </div>
                 <div class="container__top-body">
                     <div class="container__wrap-h2">
-                        <h2 class="container__h2" data-i18n="box2_title">Quản lý thời gian hiệu quả</h2>
-                        <div class="container__h2-description" data-i18n="box2_desc">
-                            Tích hợp lịch thông minh, xem các ghi chú và sự kiện theo ngày tháng.
+                        <h2 class="container__h2" data-i18n="cal_title">Nhật ký Học tập</h2>
+                        <div class="container__h2-description" data-i18n="cal_desc">
+                            Màn hình Lịch của GinoNote không chỉ đơn thuần để xem ngày tháng, mà còn đóng vai trò như một cuốn "nhật ký học tập" cá nhân trực quan. Tại đây, mọi ghi chép, ý tưởng và tiến độ ôn tập của bạn đều được lưu vết cẩn thận theo thời gian thực, giúp bạn dễ dàng quản lý lịch trình, duy trì thói quen ghi chép và tự hào nhìn lại chặng đường tích lũy kiến thức của bản thân.
                         </div>
                     </div>
                 </div>
             </div>
             <div class="container__bottom">
-                <div class="container__bottom-wrap">
-                    <div class="container__bottom-icon">
-                        <i class="material-icons">calendar_month</i>
-                    </div>
-                    <p class="container__bottom-text" data-i18n="box2_detail">Không bao giờ bỏ lỡ deadline hay sự kiện quan trọng. Chế độ xem lịch giúp bạn bao quát toàn bộ kế hoạch trong tháng chỉ với một ánh nhìn.</p>
+                <div class="container__bottom-text">
+                    <p style="margin-top: 0;">
+                        <strong data-i18n="cal_list_intro_1">Chi tiết Chức năng & Cách thức Hoạt động</strong><br>
+                        <span data-i18n="cal_list_intro_2">Dưới đây là cách màn hình Lịch hoạt động để hỗ trợ bạn như một cuốn nhật ký:</span>
+                    </p>
+                    <ul style="list-style-type: none; padding-left: 0; margin-bottom: 0;">
+                        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+                            <i class="material-icons" style="color: #ff5252; font-size: 14px; margin-right: 8px; margin-top: 4px;">lens</i> 
+                            <span data-i18n="cal_dot"><strong>Dấu chấm đỏ dưới các ngày (Dấu chân tri thức):</strong> Bất cứ khi nào bạn tạo một ghi chú mới hoặc hoàn thành một bài ôn tập, hệ thống sẽ đánh dấu một chấm đỏ nhỏ dưới ngày đó. Tính năng này giúp bạn nhìn lướt qua là có thể đánh giá ngay mức độ chuyên cần và nhịp độ học tập của mình trong tháng.</span>
+                        </li>
+                        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">restore</i> 
+                            <span data-i18n="cal_today"><strong>Icon Đồng hồ quay ngược "Hôm nay" (Trở về hiện tại):</strong> Nằm ngay dưới thanh lịch tháng. Dù bạn đang lướt lùi về quá khứ để xem lại ghi chú cũ hay tiến tới các tháng tương lai, chỉ cần một chạm vào biểu tượng này, hệ thống sẽ lập tức đưa bạn trở về lịch trình của ngày hôm nay để tập trung vào các công việc trước mắt.</span>
+                        </li>
+                        <li style="margin-bottom: 0; display: flex; align-items: flex-start;">
+                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">list_alt</i> 
+                            <span data-i18n="cal_notes"><strong>Khu vực "Ghi chú trong ngày":</strong> Khi bạn chọn vào bất kỳ ngày nào trên lịch, toàn bộ danh sách các ghi chú được tạo, chỉnh sửa hoặc lịch sử ôn tập của ngày hôm đó sẽ hiển thị chi tiết ngay bên dưới. Nó hoạt động giống như việc bạn lật giở lại từng trang nhật ký để xem chính xác mình đã nạp vào đầu những kiến thức gì trong ngày hôm đó.</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -672,13 +686,19 @@
                 "recall_title": "Hệ thống Ôn tập Chủ động",
                 "recall_desc": "GinoNote thay đổi hoàn toàn thói quen đọc lại thụ động bằng cách kết hợp sức mạnh của phương pháp Active Recall (Chủ động gọi nhớ) và Spaced Repetition (Lặp lại ngắt quãng). Hệ thống yêu cầu não bộ tự truy xuất các từ khóa bị ẩn, sau đó cung cấp phản hồi lỗi sai ngay lập tức và tự động tính toán thời điểm ôn tập hoàn hảo cho lần tiếp theo, giúp bạn ghi nhớ dài hạn với ít nỗ lực nhất.",
                 "recall_list_intro": "Chi tiết Chức năng & Cách thức Hoạt động:",
-                "recall_help": "Nằm ngay cạnh các ô trống. Khi bạn thực sự \"bí\" từ, nhấn vào biểu tượng này để nhận một gợi ý nhỏ. Nó giúp bạn gỡ rối mà không làm mất đi hoàn toàn nỗ lực tự hồi tưởng.",
+                "recall_help": "Icon Dấu hỏi chấm (?) / Trợ giúp: Nằm ngay cạnh các ô trống. Khi bạn thực sự \"bí\" từ, nhấn vào biểu tượng này để nhận một gợi ý nhỏ. Nó giúp bạn gỡ rối mà không làm mất đi hoàn toàn nỗ lực tự hồi tưởng.",
                 "recall_check": "Nút \"Kiểm tra đáp án\": Hoàn tất quá trình hồi tưởng. Chạm vào nút này để hệ thống khóa đáp án của bạn, tiến hành đối chiếu với bản gốc và đưa ra kết quả ngay lập tức.",
                 "recall_detail": "Chi tiết bài làm (Sửa lỗi trực quan): Hệ thống chấm điểm phần trăm (%) mức độ hoàn thành. Các từ đúng được in xanh lá, các từ sai hoặc bỏ trống bị bôi đỏ, gạch ngang và trỏ thẳng mũi tên sang đáp án chính xác. Ngoài ra còn tinh năng Mercy giúp bạn sửa lại đáp án nếu bị lỗi đánh máy, khi bấm vào từ bôi đỏ.",
                 "recall_diff": "Đánh giá độ khó (Again / Hard / Good / Easy): Thuật toán sẽ căn cứ vào kết quả bài làm của bạn và đưa ra gợi ý cho bạn lựa chọn.",
-                "box2_title": "Quản lý thời gian hiệu quả",
-                "box2_desc": "Tích hợp lịch thông minh, xem các ghi chú và sự kiện theo ngày tháng.",
-                "box2_detail": "Không bao giờ bỏ lỡ deadline hay sự kiện quan trọng. Chế độ xem lịch giúp bạn bao quát toàn bộ kế hoạch trong tháng chỉ với một ánh nhìn.",
+                
+                "cal_title": "Nhật ký Học tập",
+                "cal_desc": "Màn hình Lịch của GinoNote không chỉ đơn thuần để xem ngày tháng, mà còn đóng vai trò như một cuốn \"nhật ký học tập\" cá nhân trực quan. Tại đây, mọi ghi chép, ý tưởng và tiến độ ôn tập của bạn đều được lưu vết cẩn thận theo thời gian thực, giúp bạn dễ dàng quản lý lịch trình, duy trì thói quen ghi chép và tự hào nhìn lại chặng đường tích lũy kiến thức của bản thân.",
+                "cal_list_intro_1": "Chi tiết Chức năng & Cách thức Hoạt động",
+                "cal_list_intro_2": "Dưới đây là cách màn hình Lịch hoạt động để hỗ trợ bạn như một cuốn nhật ký:",
+                "cal_dot": "<strong>Dấu chấm đỏ dưới các ngày (Dấu chân tri thức):</strong> Bất cứ khi nào bạn tạo một ghi chú mới hoặc hoàn thành một bài ôn tập, hệ thống sẽ đánh dấu một chấm đỏ nhỏ dưới ngày đó. Tính năng này giúp bạn nhìn lướt qua là có thể đánh giá ngay mức độ chuyên cần và nhịp độ học tập của mình trong tháng.",
+                "cal_today": "<strong>Icon Đồng hồ quay ngược \"Hôm nay\" (Trở về hiện tại):</strong> Nằm ngay dưới thanh lịch tháng. Dù bạn đang lướt lùi về quá khứ để xem lại ghi chú cũ hay tiến tới các tháng tương lai, chỉ cần một chạm vào biểu tượng này, hệ thống sẽ lập tức đưa bạn trở về lịch trình của ngày hôm nay để tập trung vào các công việc trước mắt.",
+                "cal_notes": "<strong>Khu vực \"Ghi chú trong ngày\":</strong> Khi bạn chọn vào bất kỳ ngày nào trên lịch, toàn bộ danh sách các ghi chú được tạo, chỉnh sửa hoặc lịch sử ôn tập của ngày hôm đó sẽ hiển thị chi tiết ngay bên dưới. Nó hoạt động giống như việc bạn lật giở lại từng trang nhật ký để xem chính xác mình đã nạp vào đầu những kiến thức gì trong ngày hôm đó.",
+                
                 "box3_title": "Thống kê thói quen ghi chú",
                 "box3_desc": "Theo dõi sự tiến bộ và thói quen làm việc của bạn qua các biểu đồ trực quan.",
                 "box3_detail": "Ứng dụng tự động phân tích và đưa ra thống kê về số lượng ghi chú, thẻ tag sử dụng nhiều nhất để bạn tối ưu hóa hệ thống thông tin cá nhân.",
@@ -721,13 +741,19 @@
                 "recall_title": "Active Review System",
                 "recall_desc": "GinoNote completely changes the habit of passive rereading by combining the power of Active Recall and Spaced Repetition. The system requires your brain to retrieve hidden keywords, then provides immediate error feedback and automatically calculates the perfect review time for the next session, helping you achieve long-term retention with minimal effort.",
                 "recall_list_intro": "Function Details & How It Works:",
-                "recall_help": " Located right next to the blanks. When you are truly stuck on a word, tap this icon to get a small hint. It helps you get unstuck without completely losing the effort of self-retrieval.",
+                "recall_help": "Question Mark (?) / Help Icon: Located right next to the blanks. When you are truly stuck on a word, tap this icon to get a small hint. It helps you get unstuck without completely losing the effort of self-retrieval.",
                 "recall_check": "\"Check Answer\" Button: Completes the recall process. Tap this button for the system to lock your answer, compare it with the original, and provide immediate results.",
                 "recall_detail": "Task Details (Visual Error Correction): The system scores the completion percentage (%). Correct words are printed in green, incorrect or skipped words are highlighted in red, crossed out, and pointed directly with an arrow to the exact answer. In addition, there is a Mercy feature that helps you correct typo errors by tapping the red highlighted word.",
                 "recall_diff": "Difficulty Rating (Again / Hard / Good / Easy): The algorithm will base on your test results and provide suggestions for your selection.",
-                "box2_title": "Effective Time Management",
-                "box2_desc": "Smart calendar integration, view notes and events by date.",
-                "box2_detail": "Never miss a deadline or important event. The calendar view helps you oversee your entire monthly plan at a glance.",
+                
+                "cal_title": "Learning Diary",
+                "cal_desc": "GinoNote's Calendar screen is not just for viewing dates, but also acts as a visual personal \"learning diary\". Here, all your notes, ideas, and review progress are carefully tracked in real-time, helping you easily manage your schedule, maintain your note-taking habit, and proudly look back on your journey of accumulating knowledge.",
+                "cal_list_intro_1": "Function Details & How It Works",
+                "cal_list_intro_2": "Here is how the Calendar screen works to support you like a diary:",
+                "cal_dot": "<strong>Red dots under dates (Footprints of Knowledge):</strong> Whenever you create a new note or complete a review session, the system will mark a small red dot under that date. This feature helps you evaluate your diligence and learning pace throughout the month at a glance.",
+                "cal_today": "<strong>Rewind Clock Icon \"Today\" (Return to present):</strong> Located right below the monthly calendar bar. Whether you are scrolling back to the past to review old notes or moving forward to future months, just one tap on this icon will instantly bring you back to today's schedule to focus on the tasks at hand.",
+                "cal_notes": "<strong>\"Notes of the day\" Area:</strong> When you select any date on the calendar, the entire list of notes created, edited, or review history for that day will be displayed in detail right below. It works like turning back the pages of a diary to see exactly what knowledge you have absorbed on that specific day.",
+                
                 "box3_title": "Note-taking Habit Statistics",
                 "box3_desc": "Track your progress and workflow through visual charts.",
                 "box3_detail": "The app automatically analyzes and provides statistics on the number of notes and most used tags to optimize your personal info system.",
