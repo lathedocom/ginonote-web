@@ -123,10 +123,7 @@
             background-color: var(--primary-dark);
         }
 
-        /* ========================================================= */
-        /* --- BẮT ĐẦU: CSS CHO CÁC KHỐI CONTENT (.container) --- */
-        /* ========================================================= */
-
+        /* --- Container Content --- */
         .container {
             background: var(--card-bg);
             border-radius: 12px;
@@ -182,19 +179,8 @@
             border-top: 1px solid #eee;
         }
 
-        .container__bottom-wrap {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
-
-        .container__bottom-icon i {
-            font-size: 24px;
-            color: var(--primary-color);
-        }
-
         .container__bottom-text {
-            margin: 0 0 10px 0;
+            margin: 0;
             font-size: 14px;
             color: var(--text-main);
             line-height: 1.6;
@@ -284,6 +270,111 @@
                 justify-content: center;
             }
         }
+
+        /* --- Ưu điểm Grid --- */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        @media (min-width: 600px) {
+            .advantages-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .extra__section {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .extra__section:hover {
+            transform: translateY(-5px);
+        }
+
+        .extra__section-icon i {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .extra__section-text-h2 {
+            font-size: 18px;
+            margin: 0 0 10px 0;
+        }
+
+        .extra__section-text-description {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* --- Kêu gọi hành động --- */
+        .super__free {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 40px 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(14, 75, 117, 0.4);
+        }
+
+        .super__free-h3 {
+            font-size: 28px;
+            margin: 0 0 15px 0;
+        }
+
+        .super__free-description {
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 500;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Video Iframe */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -326,37 +417,37 @@
                 <div class="container__bottom-text">
                     <p style="margin-top: 0;"><strong data-i18n="box1_list_intro">Dưới đây là mô tả chi tiết cho các nút thao tác trên thanh công cụ:</strong></p>
                     <ul style="list-style-type: none; padding-left: 0; margin-bottom: 0;">
-                        <li style="margin-bottom: 12px;">
-                            <i class="material-icons" style="vertical-align: middle; color: var(--primary-color);">arrow_back</i> 
+                        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">arrow_back</i> 
                             <span data-i18n="icon_back">Nhấn vào biểu tượng này để đóng bản ghi chú hiện tại và trở về màn hình danh sách chính.</span>
                         </li>
-                        <li style="margin-bottom: 12px;">
-                            <i class="material-icons" style="vertical-align: middle; color: var(--primary-color);">lightbulb</i> 
-                            <span data-i18n="icon_lightbulb">Bôi đen từ khóa bạn cho là quan trọng/ cần ghi nhớ. Khi bôi đen từ khóa và nhấn vào <i class="material-icons" style="vertical-align: middle; font-size: 18px; color: var(--primary-color);">lightbulb</i>, hệ thống sẽ bọc từ khóa trong ngoặc nhọn (ví dụ: {quan điểm}) để tạo thành các ô trống ẩn từ, giúp bạn kiểm tra trí nhớ và ôn tập trích đoạn hiệu quả.</span>
+                        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">lightbulb</i> 
+                            <span data-i18n="icon_lightbulb">Bôi đen từ khóa bạn cho là quan trọng/ cần ghi nhớ. Khi bôi đen từ khóa và nhấn vào biểu tượng bóng đèn, hệ thống sẽ bọc từ khóa trong ngoặc nhọn (ví dụ: {quan điểm}) để tạo thành các ô trống ẩn từ.</span>
                         </li>
-                        <li style="margin-bottom: 12px;">
-                            <i class="material-icons" style="vertical-align: middle; color: var(--primary-color);">palette</i> 
-                            <span data-i18n="icon_palette">Cho phép bạn cá nhân hóa ghi chú hiện tại. Bạn có thể thay đổi màu nền hoặc màu sắc của các thẻ phân loại, giúp phân biệt nhanh các nhóm ghi chú bằng trực giác (ví dụ: màu đỏ cho phần quan trọng, màu xanh cho trích đoạn sách).</span>
+                        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">palette</i> 
+                            <span data-i18n="icon_palette">Cho phép bạn cá nhân hóa ghi chú hiện tại. Bạn có thể thay đổi màu nền hoặc màu sắc của các thẻ phân loại, giúp phân biệt nhanh các nhóm ghi chú bằng trực giác.</span>
                         </li>
-                        <li style="margin-bottom: 12px;">
-                            <i class="material-icons" style="vertical-align: middle; color: var(--primary-color);">image</i> 
-                            <span data-i18n="icon_image">Thêm dữ liệu trực quan vào bài viết của bạn. Chỉ cần chạm vào để tải hình ảnh có sẵn từ thiết bị hoặc mở camera chụp trực tiếp và chèn vào giữa các dòng văn bản.</span>
+                        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">image</i> 
+                            <span data-i18n="icon_image">Thêm dữ liệu trực quan vào bài viết của bạn. Chạm vào để tải hình ảnh có sẵn hoặc mở camera chụp trực tiếp và chèn vào giữa các dòng văn bản.</span>
                         </li>
-                        <li style="margin-bottom: 12px;">
-                            <i class="material-icons" style="vertical-align: middle; color: var(--primary-color);">save</i> 
-                            <span data-i18n="icon_save">Chủ động lưu trữ thủ công mọi thay đổi bạn vừa thực hiện. Thao tác này đảm bảo nội dung, hình ảnh và các thẻ phân loại mới thêm được đồng bộ lên hệ thống và lưu trữ an toàn.</span>
+                        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">save</i> 
+                            <span data-i18n="icon_save">Chủ động lưu trữ thủ công mọi thay đổi bạn vừa thực hiện, đảm bảo nội dung và các thẻ phân loại được đồng bộ lên hệ thống an toàn.</span>
                         </li>
-                        <li style="margin-bottom: 12px;">
-                            <i class="material-icons" style="vertical-align: middle; color: var(--primary-color);">history</i> 
-                            <span data-i18n="icon_history">Cho phép bạn truy cập vào lịch sử ôn tập của bản ghi chú. Tính năng này giúp bạn dễ dàng theo dõi ngày ôn tập tiếp theo và danh sách lịch sử kết quả ôn tập.</span>
+                        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">history</i> 
+                            <span data-i18n="icon_history">Truy cập vào lịch sử ôn tập của bản ghi chú. Tính năng này giúp bạn dễ dàng theo dõi ngày ôn tập tiếp theo và danh sách lịch sử kết quả ôn tập.</span>
                         </li>
-                        <li style="margin-bottom: 12px;">
-                            <i class="material-icons" style="vertical-align: middle; color: var(--primary-color);">edit</i> 
-                            <span data-i18n="icon_edit">Chuyển đổi nhanh từ chế độ xem (chỉ đọc) sang chế độ soạn thảo. Nhấn vào biểu tượng này để mở khóa trang viết, cho phép bạn bắt đầu chỉnh sửa văn bản, thêm thẻ phân loại hoặc thay đổi nội dung ghi chú.</span>
+                        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">edit</i> 
+                            <span data-i18n="icon_edit">Chuyển đổi nhanh từ chế độ xem sang chế độ soạn thảo để bắt đầu chỉnh sửa văn bản, thêm thẻ hoặc thay đổi nội dung ghi chú.</span>
                         </li>
-                        <li style="margin-bottom: 0;">
-                            <i class="material-icons" style="vertical-align: middle; color: var(--primary-color);">play_arrow</i> 
-                            <span data-i18n="icon_play">Khởi động chế độ ôn tập tập trung. Khi nhấn vào, hệ thống sẽ chuyển sang giao diện thực hành (flashcard), bắt đầu ẩn đi các từ khóa được bọc trong ngoặc nhọn {...} để bạn chính thức kiểm tra lại trí nhớ của mình.</span>
+                        <li style="margin-bottom: 0; display: flex; align-items: flex-start;">
+                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">play_arrow</i> 
+                            <span data-i18n="icon_play">Khởi động chế độ ôn tập tập trung. Hệ thống sẽ chuyển sang giao diện thực hành, ẩn đi các từ khóa trong ngoặc nhọn để bạn chính thức kiểm tra trí nhớ.</span>
                         </li>
                     </ul>
                 </div>
@@ -376,7 +467,7 @@
                     <div class="container__wrap-h2">
                         <h2 class="container__h2" data-i18n="recall_title">Hệ thống Ôn tập Chủ động</h2>
                         <div class="container__h2-description" data-i18n="recall_desc">
-                            GinoNote thay đổi hoàn toàn thói quen đọc lại thụ động bằng cách kết hợp sức mạnh của phương pháp Active Recall (Chủ động gọi nhớ) và Spaced Repetition (Lặp lại ngắt quãng). Hệ thống yêu cầu não bộ tự truy xuất các từ khóa bị ẩn, sau đó cung cấp phản hồi lỗi sai ngay lập tức và tự động tính toán thời điểm ôn tập hoàn hảo cho lần tiếp theo, giúp bạn ghi nhớ dài hạn với ít nỗ lực nhất.
+                            GinoNote thay đổi hoàn toàn thói quen đọc lại thụ động bằng cách kết hợp sức mạnh của phương pháp Active Recall (Chủ động gọi nhớ) và Spaced Repetition (Lặp lại ngắt quãng).
                         </div>
                     </div>
                 </div>
@@ -385,21 +476,21 @@
                 <div class="container__bottom-text">
                     <p style="margin-top: 0;"><strong data-i18n="recall_list_intro">Chi tiết Chức năng & Cách thức Hoạt động:</strong></p>
                     <ul style="list-style-type: none; padding-left: 0; margin-bottom: 0;">
-                        <li style="margin-bottom: 12px;">
-                            <i class="material-icons" style="vertical-align: middle; color: var(--primary-color);">help_outline</i> 
-                            <span data-i18n="recall_help">Icon Dấu hỏi chấm (?) / Trợ giúp: Nằm ngay cạnh các ô trống. Khi bạn thực sự "bí" từ, nhấn vào biểu tượng này để nhận một gợi ý nhỏ. Nó giúp bạn gỡ rối mà không làm mất đi hoàn toàn nỗ lực tự hồi tưởng.</span>
+                        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">help_outline</i> 
+                            <span data-i18n="recall_help">Icon Trợ giúp (?): Khi bạn "bí" từ, nhấn vào biểu tượng này để nhận một gợi ý nhỏ mà không làm mất đi nỗ lực tự hồi tưởng.</span>
                         </li>
-                        <li style="margin-bottom: 12px;">
-                            <i class="material-icons" style="vertical-align: middle; color: var(--primary-color);">fact_check</i> 
-                            <span data-i18n="recall_check">Nút "Kiểm tra đáp án": Hoàn tất quá trình hồi tưởng. Chạm vào nút này để hệ thống khóa đáp án của bạn, tiến hành đối chiếu với bản gốc và đưa ra kết quả ngay lập tức.</span>
+                        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">fact_check</i> 
+                            <span data-i18n="recall_check">Nút Kiểm tra đáp án: Khóa đáp án của bạn và tiến hành đối chiếu với bản gốc để đưa ra kết quả ngay lập tức.</span>
                         </li>
-                        <li style="margin-bottom: 12px;">
-                            <i class="material-icons" style="vertical-align: middle; color: var(--primary-color);">spellcheck</i> 
-                            <span data-i18n="recall_detail">Chi tiết bài làm (Sửa lỗi trực quan): Hệ thống chấm điểm phần trăm (%) mức độ hoàn thành. Các từ đúng được in xanh lá, các từ sai hoặc bỏ trống bị bôi đỏ, gạch ngang và trỏ thẳng mũi tên sang đáp án chính xác. Ngoài ra còn tinh năng Mercy giúp bạn sửa lại đáp án nếu bị lỗi đánh máy, khi bấm vào từ bôi đỏ.</span>
+                        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">spellcheck</i> 
+                            <span data-i18n="recall_detail">Sửa lỗi trực quan: Hệ thống chấm điểm %, tô xanh từ đúng và bôi đỏ từ sai kèm đáp án chính xác. Tính năng Mercy giúp sửa lỗi đánh máy nhanh.</span>
                         </li>
-                        <li style="margin-bottom: 0;">
-                            <i class="material-icons" style="vertical-align: middle; color: var(--primary-color);">thumbs_up_down</i> 
-                            <span data-i18n="recall_diff">Đánh giá độ khó (Again / Hard / Good / Easy): Thuật toán sẽ căn cứ vào kết quả bài làm của bạn và đưa ra gợi ý cho bạn lựa chọn.</span>
+                        <li style="margin-bottom: 0; display: flex; align-items: flex-start;">
+                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">thumbs_up_down</i> 
+                            <span data-i18n="recall_diff">Đánh giá độ khó (Again - Easy): Thuật toán căn cứ vào lựa chọn của bạn để lên lịch ôn tập hoàn hảo cho lần tiếp theo.</span>
                         </li>
                     </ul>
                 </div>
@@ -414,31 +505,27 @@
                 </div>
                 <div class="container__top-body">
                     <div class="container__wrap-h2">
-                        <h2 class="container__h2" data-i18n="cal_title">Nhật ký Học tập</h2>
+                        <h2 class="container__h2" data-i18n="cal_title">Nhật ký Học tập Trực quan</h2>
                         <div class="container__h2-description" data-i18n="cal_desc">
-                            Màn hình Lịch của GinoNote không chỉ đơn thuần để xem ngày tháng, mà còn đóng vai trò như một cuốn "nhật ký học tập" cá nhân trực quan. Tại đây, mọi ghi chép, ý tưởng và tiến độ ôn tập của bạn đều được lưu vết cẩn thận theo thời gian thực, giúp bạn dễ dàng quản lý lịch trình, duy trì thói quen ghi chép và tự hào nhìn lại chặng đường tích lũy kiến thức của bản thân.
+                            Màn hình Lịch đóng vai trò như một cuốn nhật ký cá nhân, nơi mọi ghi chép và tiến độ ôn tập của bạn được lưu vết cẩn thận theo thời gian thực.
                         </div>
                     </div>
                 </div>
             </div>
             <div class="container__bottom">
                 <div class="container__bottom-text">
-                    <p style="margin-top: 0;">
-                        <strong data-i18n="cal_list_intro_1">Chi tiết Chức năng & Cách thức Hoạt động</strong><br>
-                        <span data-i18n="cal_list_intro_2">Dưới đây là cách màn hình Lịch hoạt động để hỗ trợ bạn như một cuốn nhật ký:</span>
-                    </p>
                     <ul style="list-style-type: none; padding-left: 0; margin-bottom: 0;">
                         <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
                             <i class="material-icons" style="color: #ff5252; font-size: 14px; margin-right: 8px; margin-top: 4px;">lens</i> 
-                            <span data-i18n="cal_dot"><strong>Dấu chấm đỏ dưới các ngày (Dấu chân tri thức):</strong> Bất cứ khi nào bạn tạo một ghi chú mới hoặc hoàn thành một bài ôn tập, hệ thống sẽ đánh dấu một chấm đỏ nhỏ dưới ngày đó. Tính năng này giúp bạn nhìn lướt qua là có thể đánh giá ngay mức độ chuyên cần và nhịp độ học tập của mình trong tháng.</span>
+                            <span data-i18n="cal_dot">Dấu chấm đỏ dưới các ngày: Đánh dấu các mốc "Dấu chân tri thức" khi bạn tạo ghi chú hoặc ôn tập mới trong ngày.</span>
                         </li>
                         <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
                             <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">restore</i> 
-                            <span data-i18n="cal_today"><strong>Icon Đồng hồ quay ngược "Hôm nay" (Trở về hiện tại):</strong> Nằm ngay dưới thanh lịch tháng. Dù bạn đang lướt lùi về quá khứ để xem lại ghi chú cũ hay tiến tới các tháng tương lai, chỉ cần một chạm vào biểu tượng này, hệ thống sẽ lập tức đưa bạn trở về lịch trình của ngày hôm nay để tập trung vào các công việc trước mắt.</span>
+                            <span data-i18n="cal_today">Trở về hiện tại: Một chạm để quay lại lịch trình của ngày hôm nay dù bạn đang ở bất kỳ tháng nào.</span>
                         </li>
                         <li style="margin-bottom: 0; display: flex; align-items: flex-start;">
                             <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">list_alt</i> 
-                            <span data-i18n="cal_notes"><strong>Khu vực "Ghi chú trong ngày":</strong> Khi bạn chọn vào bất kỳ ngày nào trên lịch, toàn bộ danh sách các ghi chú được tạo, chỉnh sửa hoặc lịch sử ôn tập của ngày hôm đó sẽ hiển thị chi tiết ngay bên dưới. Nó hoạt động giống như việc bạn lật giở lại từng trang nhật ký để xem chính xác mình đã nạp vào đầu những kiến thức gì trong ngày hôm đó.</span>
+                            <span data-i18n="cal_notes">Dòng thời gian bài học: Hiển thị chi tiết toàn bộ danh sách ghi chú đã tạo hoặc lịch sử ôn tập khi chọn một ngày cụ thể.</span>
                         </li>
                     </ul>
                 </div>
@@ -449,32 +536,27 @@
             <div class="container__top has-image">
                 <div class="container__top-line"></div>
                 <div class="container__top-photo">
-                    <img src="thongke.jpg" alt="Màn hình thống kê" title="Thống kê hành trình ghi nhớ">
+                    <img src="thongke.jpg" alt="Màn hình thống kê" title="Thống kê GinoNote">
                 </div>
                 <div class="container__top-body">
                     <div class="container__wrap-h2">
                         <h2 class="container__h2" data-i18n="stats_title">Trực Quan Hóa Mọi Hành Trình Ghi Nhớ</h2>
                         <div class="container__h2-description" data-i18n="stats_desc">
-                            Màn hình Thống kê của GinoNote đóng vai trò như một trung tâm phân tích học tập cá nhân trực quan. Bằng cách chuyển đổi các hoạt động hàng ngày của bạn thành các số liệu và thẻ dữ liệu dễ hiểu, màn hình này giúp bạn ngay lập tức nắm bắt được thói quen học tập, hiệu suất ôn tập và tiến độ ghi nhớ theo thời gian, từ đó cung cấp động lực để duy trì sự chuyên cần mỗi ngày.
+                            Trung tâm phân tích học tập giúp bạn nắm bắt thói quen, hiệu suất ôn tập và tiến độ ghi nhớ dài hạn thông qua dữ liệu thực tế.
                         </div>
                     </div>
                 </div>
             </div>
             <div class="container__bottom">
                 <div class="container__bottom-text">
-                    <p style="margin-top: 0;"><strong data-i18n="stats_list_intro">Chi tiết Chức năng & Cách thức Hoạt động:</strong></p>
                     <ul style="list-style-type: none; padding-left: 0; margin-bottom: 0;">
                         <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
-                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">analytics</i> 
-                            <span data-i18n="stats_how">Màn hình hoạt động bằng cách tự động tổng hợp dữ liệu từ các hành động thực tế của người dùng.</span>
-                        </li>
-                        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
                             <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">bar_chart</i> 
-                            <span data-i18n="stats_metrics">Đếm tổng lượng Ghi chú bạn đã tạo, tính toán số lượng ghi chú cần ôn tập, và theo dõi hiệu suất ôn tập (số Lượt ôn tập và trung bình Kết quả kiểm tra).</span>
+                            <span data-i18n="stats_metrics">Thống kê theo Tuần/Tháng/Năm: Đếm tổng lượng ghi chú và lượt tương tác để theo dõi sự tăng trưởng tri thức.</span>
                         </li>
                         <li style="margin-bottom: 0; display: flex; align-items: flex-start;">
                             <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">psychology</i> 
-                            <span data-i18n="stats_visual">Trực quan hóa tiến độ Ghi nhớ, cho biết có bao nhiêu ghi chú "Đang ôn" và bao nhiêu ghi chú "Đã thuộc" trong khoảng thời gian.</span>
+                            <span data-i18n="stats_visual">Phân tích Ghi nhớ: Trực quan hóa số lượng ghi chú "Đang ôn" và "Đã thuộc" để đánh giá chất lượng học tập.</span>
                         </li>
                     </ul>
                 </div>
@@ -485,39 +567,86 @@
             <div class="container__top has-image">
                 <div class="container__top-line"></div>
                 <div class="container__top-photo">
-                    <img src="dongbo.png" alt="Màn hình đồng bộ" title="Đồng bộ hóa dữ liệu">
+                    <img src="dongbo.png" alt="Màn hình đồng bộ" title="Đồng bộ GinoNote">
                 </div>
                 <div class="container__top-body">
                     <div class="container__wrap-h2">
                         <h2 class="container__h2" data-i18n="sync_title">Kết Nối Tri Thức Không Giới Hạn</h2>
                         <div class="container__h2-description" data-i18n="sync_desc">
-                            GinoNote mang đến giải pháp quản lý dữ liệu toàn diện, giúp bạn xóa tan nỗi lo mất mát thông tin khi thay đổi thiết bị. Đồng bộ hóa tức thì và hệ thống xuất tệp tin độc quyền, giúp việc chia sẻ kho tàng kiến thức giữa cộng đồng người dùng trở nên dễ dàng và chuyên nghiệp hơn bao giờ hết.
+                            Xóa tan nỗi lo mất mát thông tin nhờ giải pháp đồng bộ hóa tức thì và hệ thống xuất tệp tin độc quyền để chia sẻ kiến thức.
                         </div>
                     </div>
                 </div>
             </div>
             <div class="container__bottom">
                 <div class="container__bottom-text">
-                    <p style="margin-top: 0;"><strong data-i18n="sync_list_intro">Chi tiết Chức năng & Cách thức Hoạt động:</strong></p>
                     <ul style="list-style-type: none; padding-left: 0; margin-bottom: 0;">
                         <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
                             <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">cloud_sync</i> 
-                            <span data-i18n="sync_drive"><strong>Đồng bộ hóa Google Drive an toàn:</strong> Bạn có thể đăng nhập trực tiếp bằng tài khoản Google để biến Drive thành kho lưu trữ đám mây riêng cho các ghi chú của mình. Khi bật chế độ Tự động đồng bộ, mọi chỉnh sửa trên điện thoại sẽ được sao lưu ngay lập tức lên đám mây, đảm bảo dữ liệu luôn nhất quán trên mọi thiết bị bạn sở hữu.</span>
-                        </li>
-                        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
-                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">share</i> 
-                            <span data-i18n="sync_share"><strong>Chia sẻ dữ liệu qua tệp tin .gino:</strong> Đây là tính năng mạnh mẽ cho phép bạn đóng gói toàn bộ nội dung ghi chú, bao gồm cả hình ảnh minh họa, thành một tệp tin duy nhất có định dạng .gino. Bạn có thể gửi tệp này cho bạn bè hoặc cộng đồng để họ Nhập dữ liệu vào ứng dụng GinoNote của mình, giúp việc trao đổi tài liệu học tập và các bộ ghi chú diễn ra vô cùng nhanh chóng.</span>
-                        </li>
-                        <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
-                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">filter_list</i> 
-                            <span data-i18n="sync_filter"><strong>Bộ lọc đồng bộ thông minh:</strong> Thay vì đồng bộ tất cả, GinoNote cho phép bạn Chọn thẻ đồng bộ để chỉ đưa những nội dung quan trọng lên Drive. Những ghi chú mang tính riêng tư không được gắn thẻ sẽ chỉ lưu trữ cục bộ trên máy, giúp bạn kiểm soát hoàn toàn việc chia sẻ và lưu trữ dữ liệu cá nhân.</span>
+                            <span data-i18n="sync_drive">Đồng bộ Google Drive: Tự động sao lưu mọi chỉnh sửa lên đám mây, đảm bảo dữ liệu luôn nhất quán trên mọi thiết bị.</span>
                         </li>
                         <li style="margin-bottom: 0; display: flex; align-items: flex-start;">
-                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">update</i> 
-                            <span data-i18n="sync_status"><strong>Quản lý trạng thái sao lưu:</strong> Hệ thống hiển thị rõ ràng thời gian Lần cuối đồng bộ thành công, giúp bạn kiểm soát được độ tươi mới của dữ liệu trên đám mây. Trong trường hợp cần thiết, nút Đồng bộ ngay cho phép bạn chủ động cập nhật dữ liệu thủ công chỉ với một lần chạm.</span>
+                            <i class="material-icons" style="color: var(--primary-color); margin-right: 8px;">share</i> 
+                            <span data-i18n="sync_share">Chia sẻ file .gino: Đóng gói toàn bộ nội dung và hình ảnh thành một tệp tin duy nhất để trao đổi tài liệu cực kỳ nhanh chóng.</span>
                         </li>
                     </ul>
                 </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="container__top">
+                <div class="container__top-line"></div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                </div>
+                <div class="container__top-body">
+                    <div class="container__wrap-h2">
+                        <h2 class="container__h2" data-i18n="box5_title">Khám phá sức mạnh của GinoNote</h2>
+                        <div class="container__h2-description" data-i18n="box5_desc">
+                            Xem video ngắn để nắm bắt cách ứng dụng có thể thay đổi cách bạn tổ chức cuộc sống và nâng tầm tư duy.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="advantages-grid">
+            <div class="extra__section">
+                <div class="extra__section-icon">
+                    <i class="material-icons">psychology</i>
+                </div>
+                <div class="extra__section-text">
+                    <h2 class="extra__section-text-h2" data-i18n="adv4_title">Tối ưu ghi nhớ khoa học</h2>
+                    <p class="extra__section-text-description" data-i18n="adv4_desc">Khắc sâu kiến thức vào trí nhớ dài hạn nhờ sự kết hợp giữa Active Recall và Spaced Repetition, giúp tiết kiệm thời gian học mà vẫn đạt hiệu quả cao nhất.</p>
+                </div>
+            </div>
+            <div class="extra__section">
+                <div class="extra__section-icon">
+                    <i class="material-icons">insert_chart</i>
+                </div>
+                <div class="extra__section-text">
+                    <h2 class="extra__section-text-h2" data-i18n="adv5_title">Thống kê thông minh</h2>
+                    <p class="extra__section-text-description" data-i18n="adv5_desc">Theo dõi tiến độ bản thân qua hệ thống trực quan, tự động dự báo khối lượng bài cần ôn để bạn luôn làm chủ kế hoạch học tập mỗi ngày.</p>
+                </div>
+            </div>
+            <div class="extra__section">
+                <div class="extra__section-icon">
+                    <i class="material-icons">folder_shared</i>
+                </div>
+                <div class="extra__section-text">
+                    <h2 class="extra__section-text-h2" data-i18n="adv6_title">Dễ dàng chia sẻ</h2>
+                    <p class="extra__section-text-description" data-i18n="adv6_desc">Đóng gói và chia sẻ kho tàng kiến thức qua file .gino độc quyền, giúp trao đổi các bộ thẻ ghi chú tiện lợi và sử dụng ngoại tuyến dễ dàng.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="super__free">
+            <div class="super__free-text">
+                <h3 class="super__free-h3" data-i18n="free_title">Sẵn sàng khắc ghi chú vào trí nhớ?</h3>
+                <p class="super__free-description" data-i18n="free_desc">
+                    Đừng chỉ ghi chép rồi để đó. Hãy để GinoNote giúp bạn chuyển hóa thông tin thành tri thức. Ứng dụng hệ thống khoa học Active Recall và Spaced Repetition là khoản đầu tư bền vững nhất cho tư duy của bạn.
+                </p>
             </div>
         </div>
 
@@ -537,84 +666,90 @@
                 "box1_desc": "Màn hình soạn thảo của GinoNote mang đến trải nghiệm viết hoàn toàn không gây phân tâm nhờ thiết kế tối giản và chế độ nền tối (dark mode) dịu mắt. Điểm ưu việt của màn hình này là sự kết hợp giữa hệ thống \"Thẻ phân loại\" (Tags) giúp tổ chức dữ liệu khoa học, và tính năng đánh dấu từ khóa thông minh bằng ngoặc nhọn {...}, rất lý tưởng để tạo các bài ôn tập dạng điền từ hoặc làm nổi bật những từ khóa cốt lõi.",
                 "box1_list_intro": "Dưới đây là mô tả chi tiết cho các nút thao tác trên thanh công cụ:",
                 "icon_back": "Nhấn vào biểu tượng này để đóng bản ghi chú hiện tại và trở về màn hình danh sách chính.",
-                "icon_lightbulb": "Bôi đen từ khóa bạn cho là quan trọng/ cần ghi nhớ. Khi bôi đen từ khóa và nhấn vào <i class=\"material-icons\" style=\"vertical-align: middle; font-size: 18px; color: var(--primary-color);\">lightbulb</i>, hệ thống sẽ bọc từ khóa trong ngoặc nhọn (ví dụ: {quan điểm}) để tạo thành các ô trống ẩn từ, giúp bạn kiểm tra trí nhớ và ôn tập trích đoạn hiệu quả.",
-                "icon_palette": "Cho phép bạn cá nhân hóa ghi chú hiện tại. Bạn có thể thay đổi màu nền hoặc màu sắc của các thẻ phân loại, giúp phân biệt nhanh các nhóm ghi chú bằng trực giác (ví dụ: màu đỏ cho phần quan trọng, màu xanh cho trích đoạn sách).",
-                "icon_image": "Thêm dữ liệu trực quan vào bài viết của bạn. Chỉ cần chạm vào để tải hình ảnh có sẵn từ thiết bị hoặc mở camera chụp trực tiếp và chèn vào giữa các dòng văn bản.",
-                "icon_save": "Chủ động lưu trữ thủ công mọi thay đổi bạn vừa thực hiện. Thao tác này đảm bảo nội dung, hình ảnh và các thẻ phân loại mới thêm được đồng bộ lên hệ thống và lưu trữ an toàn.",
-                "icon_history": "Cho phép bạn truy cập vào lịch sử ôn tập của bản ghi chú. Tính năng này giúp bạn dễ dàng theo dõi ngày ôn tập tiếp theo và danh sách lịch sử kết quả ôn tập.",
-                "icon_edit": "Chuyển đổi nhanh từ chế độ xem (chỉ đọc) sang chế độ soạn thảo. Nhấn vào biểu tượng này để mở khóa trang viết, cho phép bạn bắt đầu chỉnh sửa văn bản, thêm thẻ phân loại hoặc thay đổi nội dung ghi chú.",
-                "icon_play": "Khởi động chế độ ôn tập tập trung. Khi nhấn vào, hệ thống sẽ chuyển sang giao diện thực hành (flashcard), bắt đầu ẩn đi các từ khóa được bọc trong ngoặc nhọn {...} để bạn chính thức kiểm tra lại trí nhớ của mình.",
+                "icon_lightbulb": "Bôi đen từ khóa bạn cho là quan trọng/ cần ghi nhớ. Khi bôi đen từ khóa và nhấn vào biểu tượng bóng đèn, hệ thống sẽ bọc từ khóa trong ngoặc nhọn (ví dụ: {quan điểm}) để tạo thành các ô trống ẩn từ.",
+                "icon_palette": "Cho phép bạn cá nhân hóa ghi chú hiện tại. Bạn có thể thay đổi màu nền hoặc màu sắc của các thẻ phân loại, giúp phân biệt nhanh các nhóm ghi chú bằng trực giác.",
+                "icon_image": "Thêm dữ liệu trực quan vào bài viết của bạn. Chạm vào để tải hình ảnh có sẵn hoặc mở camera chụp trực tiếp và chèn vào giữa các dòng văn bản.",
+                "icon_save": "Chủ động lưu trữ thủ công mọi thay đổi bạn vừa thực hiện, đảm bảo nội dung và các thẻ phân loại được đồng bộ lên hệ thống an toàn.",
+                "icon_history": "Truy cập vào lịch sử ôn tập của bản ghi chú. Tính năng này giúp bạn dễ dàng theo dõi ngày ôn tập tiếp theo và danh sách lịch sử kết quả ôn tập.",
+                "icon_edit": "Chuyển đổi nhanh từ chế độ xem sang chế độ soạn thảo để bắt đầu chỉnh sửa văn bản, thêm thẻ hoặc thay đổi nội dung ghi chú.",
+                "icon_play": "Khởi động chế độ ôn tập tập trung. Hệ thống sẽ chuyển sang giao diện thực hành, ẩn đi các từ khóa trong ngoặc nhọn để bạn chính thức kiểm tra trí nhớ.",
                 "recall_title": "Hệ thống Ôn tập Chủ động",
-                "recall_desc": "GinoNote thay đổi hoàn toàn thói quen đọc lại thụ động bằng cách kết hợp sức mạnh của phương pháp Active Recall (Chủ động gọi nhớ) và Spaced Repetition (Lặp lại ngắt quãng). Hệ thống yêu cầu não bộ tự truy xuất các từ khóa bị ẩn, sau đó cung cấp phản hồi lỗi sai ngay lập tức và tự động tính toán thời điểm ôn tập hoàn hảo cho lần tiếp theo, giúp bạn ghi nhớ dài hạn với ít nỗ lực nhất.",
+                "recall_desc": "GinoNote thay đổi hoàn toàn thói quen đọc lại thụ động bằng cách kết hợp sức mạnh của phương pháp Active Recall (Chủ động gọi nhớ) và Spaced Repetition (Lặp lại ngắt quãng).",
                 "recall_list_intro": "Chi tiết Chức năng & Cách thức Hoạt động:",
-                "recall_help": "Icon Dấu hỏi chấm (?) / Trợ giúp: Nằm ngay cạnh các ô trống. Khi bạn thực sự \"bí\" từ, nhấn vào biểu tượng này để nhận một gợi ý nhỏ. Nó giúp bạn gỡ rối mà không làm mất đi hoàn toàn nỗ lực tự hồi tưởng.",
-                "recall_check": "Nút \"Kiểm tra đáp án\": Hoàn tất quá trình hồi tưởng. Chạm vào nút này để hệ thống khóa đáp án của bạn, tiến hành đối chiếu với bản gốc và đưa ra kết quả ngay lập tức.",
-                "recall_detail": "Chi tiết bài làm (Sửa lỗi trực quan): Hệ thống chấm điểm phần trăm (%) mức độ hoàn thành. Các từ đúng được in xanh lá, các từ sai hoặc bỏ trống bị bôi đỏ, gạch ngang và trỏ thẳng mũi tên sang đáp án chính xác. Ngoài ra còn tinh năng Mercy giúp bạn sửa lại đáp án nếu bị lỗi đánh máy, khi bấm vào từ bôi đỏ.",
-                "recall_diff": "Đánh giá độ khó (Again / Hard / Good / Easy): Thuật toán sẽ căn cứ vào kết quả bài làm của bạn và đưa ra gợi ý cho bạn lựa chọn.",
-                "cal_title": "Nhật ký Học tập",
-                "cal_desc": "Màn hình Lịch của GinoNote không chỉ đơn thuần để xem ngày tháng, mà còn đóng vai trò như một cuốn \"nhật ký học tập\" cá nhân trực quan. Tại đây, mọi ghi chép, ý tưởng và tiến độ ôn tập của bạn đều được lưu vết cẩn thận theo thời gian thực, giúp bạn dễ dàng quản lý lịch trình, duy trì thói quen ghi chép và tự hào nhìn lại chặng đường tích lũy kiến thức của bản thân.",
-                "cal_list_intro_1": "Chi tiết Chức năng & Cách thức Hoạt động",
-                "cal_list_intro_2": "Dưới đây là cách màn hình Lịch hoạt động để hỗ trợ bạn như một cuốn nhật ký:",
-                "cal_dot": "<strong>Dấu chấm đỏ dưới các ngày (Dấu chân tri thức):</strong> Bất cứ khi nào bạn tạo một ghi chú mới hoặc hoàn thành một bài ôn tập, hệ thống sẽ đánh dấu một chấm đỏ nhỏ dưới ngày đó. Tính năng này giúp bạn nhìn lướt qua là có thể đánh giá ngay mức độ chuyên cần và nhịp độ học tập của mình trong tháng.",
-                "cal_today": "<strong>Icon Đồng hồ quay ngược \"Hôm nay\" (Trở về hiện tại):</strong> Nằm ngay dưới thanh lịch tháng. Dù bạn đang lướt lùi về quá khứ để xem lại ghi chú cũ hay tiến tới các tháng tương lai, chỉ cần một chạm vào biểu tượng này, hệ thống sẽ lập tức đưa bạn trở về lịch trình của ngày hôm nay để tập trung vào các công việc trước mắt.",
-                "cal_notes": "<strong>Khu vực \"Ghi chú trong ngày\":</strong> Khi bạn chọn vào bất kỳ ngày nào trên lịch, toàn bộ danh sách các ghi chú được tạo, chỉnh sửa hoặc lịch sử ôn tập của ngày hôm đó sẽ hiển thị chi tiết ngay bên dưới. Nó hoạt động giống như việc bạn lật giở lại từng trang nhật ký để xem chính xác mình đã nạp vào đầu những kiến thức gì trong ngày hôm đó.",
+                "recall_help": "Icon Trợ giúp (?): Khi bạn \"bí\" từ, nhấn vào biểu tượng này để nhận một gợi ý nhỏ mà không làm mất đi nỗ lực tự hồi tưởng.",
+                "recall_check": "Nút Kiểm tra đáp án: Khóa đáp án của bạn và tiến hành đối chiếu với bản gốc để đưa ra kết quả ngay lập tức.",
+                "recall_detail": "Sửa lỗi trực quan: Hệ thống chấm điểm %, tô xanh từ đúng và bôi đỏ từ sai kèm đáp án chính xác. Tính năng Mercy giúp sửa lỗi đánh máy nhanh.",
+                "recall_diff": "Đánh giá độ khó (Again - Easy): Thuật toán căn cứ vào lựa chọn của bạn để lên lịch ôn tập hoàn hảo cho lần tiếp theo.",
+                "cal_title": "Nhật ký Học tập Trực quan",
+                "cal_desc": "Màn hình Lịch đóng vai trò như một cuốn nhật ký cá nhân, nơi mọi ghi chép và tiến độ ôn tập của bạn được lưu vết cẩn thận theo thời gian thực.",
+                "cal_dot": "Dấu chấm đỏ dưới các ngày: Đánh dấu các mốc \"Dấu chân tri thức\" khi bạn tạo ghi chú hoặc ôn tập mới trong ngày.",
+                "cal_today": "Trở về hiện tại: Một chạm để quay lại lịch trình của ngày hôm nay dù bạn đang ở bất kỳ tháng nào.",
+                "cal_notes": "Dòng thời gian bài học: Hiển thị chi tiết toàn bộ danh sách ghi chú đã tạo hoặc lịch sử ôn tập khi chọn một ngày cụ thể.",
                 "stats_title": "Trực Quan Hóa Mọi Hành Trình Ghi Nhớ",
-                "stats_desc": "Màn hình Thống kê của GinoNote đóng vai trò như một trung tâm phân tích học tập cá nhân trực quan. Bằng cách chuyển đổi các hoạt động hàng ngày của bạn thành các số liệu và thẻ dữ liệu dễ hiểu, màn hình này giúp bạn ngay lập tức nắm bắt được thói quen học tập, hiệu suất ôn tập và tiến độ ghi nhớ theo thời gian, từ đó cung cấp động lực để duy trì sự chuyên cần mỗi ngày.",
-                "stats_list_intro": "Chi tiết Chức năng & Cách thức Hoạt động:",
-                "stats_how": "Màn hình hoạt động bằng cách tự động tổng hợp dữ liệu từ các hành động thực tế của người dùng.",
-                "stats_metrics": "Đếm tổng lượng Ghi chú bạn đã tạo, tính toán số lượng ghi chú cần ôn tập, và theo dõi hiệu suất ôn tập (số Lượt ôn tập và trung bình Kết quả kiểm tra).",
-                "stats_visual": "Trực quan hóa tiến độ Ghi nhớ, cho biết có bao nhiêu ghi chú \"Đang ôn\" và bao nhiêu ghi chú \"Đã thuộc\" trong khoảng thời gian.",
+                "stats_desc": "Trung tâm phân tích học tập giúp bạn nắm bắt thói quen, hiệu suất ôn tập và tiến độ ghi nhớ dài hạn thông qua dữ liệu thực tế.",
+                "stats_metrics": "Thống kê theo Tuần/Tháng/Năm: Đếm tổng lượng ghi chú và lượt tương tác để theo dõi sự tăng trưởng tri thức.",
+                "stats_visual": "Phân tích Ghi nhớ: Trực quan hóa số lượng ghi chú \"Đang ôn\" và \"Đã thuộc\" để đánh giá chất lượng học tập.",
                 "sync_title": "Kết Nối Tri Thức Không Giới Hạn",
-                "sync_desc": "GinoNote mang đến giải pháp quản lý dữ liệu toàn diện, giúp bạn xóa tan nỗi lo mất mát thông tin khi thay đổi thiết bị. Đồng bộ hóa tức thì và hệ thống xuất tệp tin độc quyền, giúp việc chia sẻ kho tàng kiến thức giữa cộng đồng người dùng trở nên dễ dàng và chuyên nghiệp hơn bao giờ hết.",
-                "sync_list_intro": "Chi tiết Chức năng & Cách thức Hoạt động:",
-                "sync_drive": "<strong>Đồng bộ hóa Google Drive an toàn:</strong> Bạn có thể đăng nhập trực tiếp bằng tài khoản Google để biến Drive thành kho lưu trữ đám mây riêng cho các ghi chú của mình. Khi bật chế độ Tự động đồng bộ, mọi chỉnh sửa trên điện thoại sẽ được sao lưu ngay lập tức lên đám mây, đảm bảo dữ liệu luôn nhất quán trên mọi thiết bị bạn sở hữu.",
-                "sync_share": "<strong>Chia sẻ dữ liệu qua tệp tin .gino:</strong> Đây là tính năng mạnh mẽ cho phép bạn đóng gói toàn bộ nội dung ghi chú, bao gồm cả hình ảnh minh họa, thành một tệp tin duy nhất có định dạng .gino. Bạn có thể gửi tệp này cho bạn bè hoặc cộng đồng để họ Nhập dữ liệu vào ứng dụng GinoNote của mình, giúp việc trao đổi tài liệu học tập và các bộ ghi chú diễn ra vô cùng nhanh chóng.",
-                "sync_filter": "<strong>Bộ lọc đồng bộ thông minh:</strong> Thay vì đồng bộ tất cả, GinoNote cho phép bạn Chọn thẻ đồng bộ để chỉ đưa những nội dung quan trọng lên Drive. Những ghi chú mang tính riêng tư không được gắn thẻ sẽ chỉ lưu trữ cục bộ trên máy, giúp bạn kiểm soát hoàn toàn việc chia sẻ và lưu trữ dữ liệu cá nhân.",
-                "sync_status": "<strong>Quản lý trạng thái sao lưu:</strong> Hệ thống hiển thị rõ ràng thời gian Lần cuối đồng bộ thành công, giúp bạn kiểm soát được độ tươi mới của dữ liệu trên đám mây. Trong trường hợp cần thiết, nút Đồng bộ ngay cho phép bạn chủ động cập nhật dữ liệu thủ công chỉ với một lần chạm.",
+                "sync_desc": "Xóa tan nỗi lo mất mát thông tin nhờ giải pháp đồng bộ hóa tức thì và hệ thống xuất tệp tin độc quyền để chia sẻ kiến thức.",
+                "sync_drive": "Đồng bộ Google Drive: Tự động sao lưu mọi chỉnh sửa lên đám mây, đảm bảo dữ liệu luôn nhất quán trên mọi thiết bị.",
+                "sync_share": "Chia sẻ file .gino: Đóng gói toàn bộ nội dung và hình ảnh thành một tệp tin duy nhất để trao đổi tài liệu cực kỳ nhanh chóng.",
+                "box5_title": "Khám phá sức mạnh của GinoNote",
+                "box5_desc": "Xem video ngắn để nắm bắt cách ứng dụng có thể thay đổi cách bạn tổ chức cuộc sống và nâng tầm tư duy.",
+                "adv4_title": "Tối ưu ghi nhớ khoa học",
+                "adv4_desc": "Khắc sâu kiến thức vào trí nhớ dài hạn nhờ sự kết hợp giữa Active Recall và Spaced Repetition, giúp tiết kiệm thời gian học mà vẫn đạt hiệu quả cao nhất.",
+                "adv5_title": "Thống kê thông minh",
+                "adv5_desc": "Theo dõi tiến độ bản thân qua hệ thống trực quan, tự động dự báo khối lượng bài cần ôn để bạn luôn làm chủ kế hoạch học tập mỗi ngày.",
+                "adv6_title": "Dễ dàng chia sẻ",
+                "adv6_desc": "Đóng gói và chia sẻ kho tàng kiến thức qua file .gino độc quyền, giúp trao đổi các bộ thẻ ghi chú tiện lợi và sử dụng ngoại tuyến dễ dàng.",
+                "free_title": "Sẵn sàng khắc ghi chú vào trí nhớ?",
+                "free_desc": "Đừng chỉ ghi chép rồi để đó. Hãy để GinoNote giúp bạn chuyển hóa thông tin thành tri thức. Ứng dụng hệ thống khoa học Active Recall và Spaced Repetition là khoản đầu tư bền vững nhất cho tư duy của bạn.",
                 "policy": "Chính sách bảo mật",
                 "terms": "Điều khoản sử dụng"
             },
             "en": {
                 "slogan": "Etch notes into your memory",
                 "download": "Download on Google Play",
-                "box1_title": "Minimalist, Focused Note Space for Learning Support",
-                "box1_desc": "GinoNote's editor offers a completely distraction-free writing experience thanks to its minimalist design and soothing dark mode. The highlight of this screen is the combination of a \"Tags\" system for scientific data organization, and the smart keyword highlighting feature using curly brackets {...}, perfect for creating fill-in-the-blank review exercises or emphasizing core keywords.",
-                "box1_list_intro": "Below is a detailed description of the toolbar operation buttons:",
+                "box1_title": "Minimalist, Focused Note Space",
+                "box1_desc": "GinoNote's editor offers a completely distraction-free writing experience thanks to its minimalist design and soothing dark mode. Perfect for creating review exercises by emphasizing core keywords using curly brackets.",
+                "box1_list_intro": "Below is a detailed description of the toolbar buttons:",
                 "icon_back": "Tap this icon to close the current note and return to the main list screen.",
-                "icon_lightbulb": "Select a keyword you consider important/need to memorize. When you select a keyword and tap <i class=\"material-icons\" style=\"vertical-align: middle; font-size: 18px; color: var(--primary-color);\">lightbulb</i>, the system will wrap it in curly brackets (e.g., {viewpoint}) to create hidden fill-in-the-blank spaces, helping you test your memory and effectively review excerpts.",
-                "icon_palette": "Allows you to personalize the current note. You can change the background color or the color of the tags, helping quickly distinguish note groups intuitively (e.g., red for important parts, blue for book excerpts).",
-                "icon_image": "Add visual data to your writing. Just tap to upload an existing image from your device or open the camera to shoot directly and insert it between text lines.",
-                "icon_save": "Proactively and manually save any changes you just made. This ensures the content, images, and newly added tags are synced to the system and stored securely.",
-                "icon_history": "Allows you to access the note's review history. This feature helps you easily track the next review date and the history of your review results.",
-                "icon_edit": "Quickly switch from view mode (read-only) to editing mode. Tap this icon to unlock the writing page, allowing you to start editing text, adding tags, or changing the note content.",
-                "icon_play": "Start the focused review mode. When tapped, the system will switch to the practice interface (flashcard), starting to hide the keywords wrapped in curly brackets {...} so you can officially test your memory.",
+                "icon_lightbulb": "Select a keyword to memorize. Tapping this wraps it in curly brackets to create hidden blanks for active recall sessions.",
+                "icon_palette": "Personalize your note. Change background colors or tag colors to visually distinguish different note groups.",
+                "icon_image": "Add visual data. Upload images or use the camera to insert photos directly between text lines.",
+                "icon_save": "Manually save changes to ensure content and tags are securely synced to the system.",
+                "icon_history": "Access review history. Easily track your next review date and past session results.",
+                "icon_edit": "Quickly switch to editing mode to modify text, add tags, or update note content.",
+                "icon_play": "Start focused review mode. The system hides bracketed keywords to test your memory.",
                 "recall_title": "Active Review System",
-                "recall_desc": "GinoNote completely changes the habit of passive rereading by combining the power of Active Recall and Spaced Repetition. The system requires your brain to retrieve hidden keywords, then provides immediate error feedback and automatically calculates the perfect review time for the next session, helping you achieve long-term retention with minimal effort.",
+                "recall_desc": "GinoNote transforms passive reading habits by combining the power of Active Recall and Spaced Repetition for long-term retention.",
                 "recall_list_intro": "Function Details & How It Works:",
-                "recall_help": "Question Mark (?) / Help Icon: Located right next to the blanks. When you are truly stuck on a word, tap this icon to get a small hint. It helps you get unstuck without completely losing the effort of self-retrieval.",
-                "recall_check": "\"Check Answer\" Button: Completes the recall process. Tap this button for the system to lock your answer, compare it with the original, and provide immediate results.",
-                "recall_detail": "Task Details (Visual Error Correction): The system scores the completion percentage (%). Correct words are printed in green, incorrect or skipped words are highlighted in red, crossed out, and pointed directly with an arrow to the exact answer. In addition, there is a Mercy feature that helps you correct typo errors by tapping the red highlighted word.",
-                "recall_diff": "Difficulty Rating (Again / Hard / Good / Easy): The algorithm will base on your test results and provide suggestions for your selection.",
-                "cal_title": "Learning Diary",
-                "cal_desc": "GinoNote's Calendar screen is not just for viewing dates, but also acts as a visual personal \"learning diary\". Here, all your notes, ideas, and review progress are carefully tracked in real-time, helping you easily manage your schedule, maintain your note-taking habit, and proudly look back on your journey of accumulating knowledge.",
-                "cal_list_intro_1": "Function Details & How It Works",
-                "cal_list_intro_2": "Here is how the Calendar screen works to support you like a diary:",
-                "cal_dot": "<strong>Red dots under dates (Footprints of Knowledge):</strong> Whenever you create a new note or complete a review session, the system will mark a small red dot under that date. This feature helps you evaluate your diligence and learning pace throughout the month at a glance.",
-                "cal_today": "<strong>Rewind Clock Icon \"Today\" (Return to present):</strong> Located right below the monthly calendar bar. Whether you are scrolling back to the past to review old notes or moving forward to future months, just one tap on this icon will instantly bring you back to today's schedule to focus on the tasks at hand.",
-                "cal_notes": "<strong>\"Notes of the day\" Area:</strong> When you select any date on the calendar, the entire list of notes created, edited, or review history for that day will be displayed in detail right below. It works like turning back the pages of a diary to see exactly what knowledge you have absorbed on that specific day.",
+                "recall_help": "Help Icon (?): When stuck, tap for a small hint without losing the effort of self-retrieval.",
+                "recall_check": "Check Answer: Locks your answer and compares it with the original for immediate feedback.",
+                "recall_detail": "Visual Correction: Scores your session, highlights correct words in green and mistakes in red. Mercy feature fixed typos.",
+                "recall_diff": "Difficulty Rating (Again - Easy): The algorithm uses your choice to schedule the perfect next review session.",
+                "cal_title": "Visual Learning Diary",
+                "cal_desc": "The Calendar acts as a personal diary, where every note and review progress is tracked in real-time.",
+                "cal_dot": "Red dots under dates: Marks 'Footprints of Knowledge' when you create notes or review sessions.",
+                "cal_today": "Return to Today: One tap to return to today's schedule from any month.",
+                "cal_notes": "Lesson Timeline: Displays a detailed list of notes and review history for a specific day.",
                 "stats_title": "Visualize Every Memory Journey",
-                "stats_desc": "GinoNote's Statistics screen acts as a visual personal learning analysis center. By transforming your daily activities into easy-to-understand metrics and data cards, this screen helps you instantly grasp your study habits, review performance, and memorization progress over time, thereby providing motivation to maintain daily diligence.",
-                "stats_list_intro": "Function Details & How It Works:",
-                "stats_how": "The screen works by automatically aggregating data from actual user actions.",
-                "stats_metrics": "It counts the total number of Notes you have created, calculates the number of notes needing review, and tracks review performance (number of Review Sessions and average Test Results).",
-                "stats_visual": "It visualizes Memorization progress, showing how many notes are \"Learning\" and how many are \"Mastered\" within a period.",
+                "stats_desc": "An analysis center helping you grasp habits, review performance, and long-term memory progress through actual data.",
+                "stats_metrics": "Weekly/Monthly/Yearly Stats: Counts total notes and interactions to track knowledge growth.",
+                "stats_visual": "Memory Analysis: Visualizes 'Learning' vs 'Mastered' notes to evaluate study quality.",
                 "sync_title": "Unlimited Knowledge Connection",
-                "sync_desc": "GinoNote brings a comprehensive data management solution, helping you eliminate worries about information loss when changing devices. Instant synchronization and a proprietary file export system make sharing knowledge among the user community easier and more professional than ever.",
-                "sync_list_intro": "Function Details & How It Works:",
-                "sync_drive": "<strong>Secure Google Drive Synchronization:</strong> You can log in directly with your Google account to turn Drive into your own private cloud storage for your notes. When Auto-Sync is on, all mobile edits are instantly backed up to the cloud, ensuring data consistency across every device you own.",
-                "sync_share": "<strong>Data Sharing via .gino files:</strong> This powerful feature allows you to pack all note content, including illustrations, into a single file with the .gino extension. You can send this file to friends or the community so they can Import data into their GinoNote app, making the exchange of study materials and note sets incredibly fast.",
-                "sync_filter": "<strong>Smart Sync Filter:</strong> Instead of syncing everything, GinoNote allows you to Select Tags to Sync to only upload important content to Drive. Private notes without tags will remain stored locally on the device, giving you full control over sharing and personal data storage.",
-                "sync_status": "<strong>Backup Status Management:</strong> The system clearly displays the Last Successful Sync time, helping you monitor the freshness of your data in the cloud. When necessary, the Sync Now button allows you to manually update data with just one tap.",
+                "sync_desc": "Eliminate worries about data loss with instant synchronization and a proprietary file sharing system.",
+                "sync_drive": "Google Drive Sync: Automatically back up edits to the cloud, keeping data consistent across all devices.",
+                "sync_share": "Share .gino files: Pack content and images into a single file for incredibly fast material exchange.",
+                "box5_title": "Discover the Power of GinoNote",
+                "box5_desc": "Watch a short video to see how the app can change your organization and elevate your thinking.",
+                "adv4_title": "Scientific Memorization",
+                "adv4_desc": "Engrave knowledge into long-term memory using Active Recall and Spaced Repetition, maximizing learning efficiency.",
+                "adv5_title": "Smart Achievement Stats",
+                "adv5_desc": "Track progress through a visual system that forecasts upcoming review workloads to master your study plan.",
+                "adv6_title": "Easy Sharing",
+                "adv6_desc": "Share knowledge via proprietary .gino files, making deck exchanges convenient and accessible offline.",
+                "free_title": "Ready to etch notes into memory?",
+                "free_desc": "Don't just take notes. Let GinoNote transform information into knowledge. Using scientific systems is the best investment for your mind.",
                 "policy": "Privacy Policy",
                 "terms": "Terms of Use"
             }
@@ -633,8 +768,6 @@
                 }
             });
 
-            document.getElementById("link-policy").href = currentLang === "vi" ? "policy_vi.html" : "policy_en.html";
-            document.getElementById("link-terms").href = currentLang === "vi" ? "terms_vi.html" : "terms_en.html";
             document.getElementById("langToggle").innerText = currentLang === "vi" ? "VI / EN" : "EN / VI";
         }
     </script>
