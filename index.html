@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lathedo - Sáng tạo giải pháp, định hướng tương lai</title>
+    <link rel="icon" type="image/png" href="ltd.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <style>
+        /* --- Hệ thống Biến số Màu sắc (Chế độ Sáng - Mặc định) --- */
+        :root {
+            --primary-color: #0E4B75;
+            --primary-dark: #0A3552;
+            --text-main: #202124;
+            --text-light: #5F6368;
+            --bg-white: #FFFFFF;
+            --section-bg-alt: #F0F4F8; 
+            --toolbar-bg: #FFFFFF;
+            --card-bg: #FFFFFF;
+            --border-color: #E8EAED;
+            --shadow-color: rgba(0,0,0,0.08);
+            --accent-color: #FFB300;
+            --cta-color: #1A73E8;
+            --cta-hover: #1557B0;
+        }
+
+        /* --- Hệ thống Biến số Màu sắc (Chế độ Tối) --- */
+        [data-theme="dark"] {
+            --primary-color: #64B5F6;
+            --primary-dark: #90CAF9;
+            --text-main: #E8EAED;
+            --text-light: #9AA0A6;
+            --bg-white: #202124; 
+            --section-bg-alt: #292A2D; 
+            --toolbar-bg: #202124;
+            --card-bg: #2D2E31;
+            --border-color: #3C4043;
+            --shadow-color: rgba(0,0,0,0.4);
+            --accent-color: #FFCA28;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-white);
+            color: var(--text-main);
+            padding-top: 64px;
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* --- Toolbar --- */
+        .toolbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 64px;
+            background-color: var(--toolbar-bg);
+            box-shadow: 0 2px 8px var(--shadow-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+            box-sizing: border-box;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        .toolbar-logo {
+            font-weight: 700;
+            font-size: 22px;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .toolbar-logo img {
+            height: 36px;
+            width: auto;
+        }
+
+        .toolbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Nút đổi giao diện (Sáng/Tối) */
+        .icon-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .icon-btn:hover {
+            background-color: var(--section-bg-alt);
+            color: var(--primary-color);
+        }
+
+        /* Nút chuyển đổi ngôn ngữ */
+        .lang-btn {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 6px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .lang-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--bg-white);
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #0E4B75, #0A3552); /* Giữ màu cố định cho Hero để nổi bật */
+            color: white;
+            margin-bottom: 60px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+
+        .hero-title {
+            font-size: clamp(28px, 5vw, 42px); 
+            font-weight: 700;
+            margin: 0 0 16px 0;
+            line-height: 1.3;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(16px, 3vw, 18px); 
+            font-weight: 300;
+            max-width: 650px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* --- Lưới Sản phẩm --- */
+        .section-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        .section-title {
+            font-size: clamp(24px, 4vw, 32px);
+            color: var(--primary-dark);
+            margin-bottom: 32px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr; 
+            gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .project-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* --- Cards --- */
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px var(--shadow-color);
+            border-color: var(--primary-color);
+        }
+
+        .project-card-header {
+            height: 6px;
+            background-color: var(--accent-color);
+            width: 100%;
+        }
+
+        .project-card-header.blue {
+            background-color: var(--primary-color);
+        }
+
+        .project-card-body {
+            padding: 32px 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-icon {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+        }
+        
+        .project-img-icon {
+            height: 56px;
+            width: auto;
+            margin-bottom: 16px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            /* Chống méo ảnh */
+            align-self: flex-start;
+            object-fit: contain;
+        }
+
+        .project-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            color: var(--primary-dark);
+        }
+
+        .project-desc {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+            flex-grow: 1;
+        }
+
+        /* --- Buttons --- */
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            flex: 1;
+            justify-content: center;
+        }
+
+        @media (min-width: 480px) {
+            .btn { flex: none; } 
+        }
+
+        .btn-primary {
+            background-color: var(--cta-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+        }
+
+        .btn-primary:hover { 
+            background-color: var(--cta-hover); 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(26, 115, 232, 0.5);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--section-bg-alt);
+        }
+
+        /* --- Footer --- */
+        .footer {
+            text-align: center;
+            padding: 30px 24px;
+            background-color: var(--bg-white);
+            border-top: 1px solid var(--border-color);
+            color: var(--text-light);
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="toolbar">
+        <a href="#" class="toolbar-logo">
+            <img src="ltd.png" alt="Lathedo Logo"> Lathedo
+        </a>
+        <div class="toolbar-actions">
+            <button class="icon-btn" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle Dark Mode" title="Giao diện Sáng/Tối">
+                <i class="material-icons" id="themeIcon">dark_mode</i>
+            </button>
+            <button class="lang-btn" id="langToggle" onclick="toggleLanguage()">VI / EN</button>
+        </div>
+    </div>
+
+    <div class="hero-section">
+        <h1 class="hero-title" data-i18n="hero_title">Sáng tạo giải pháp, định hướng tương lai</h1>
+        <p class="hero-subtitle" data-i18n="hero_subtitle">Chúng tôi xây dựng các ứng dụng khoa học và công cụ hữu ích nhằm giúp bạn tối ưu hóa thời gian, nỗ lực và vươn tới thành công.</p>
+    </div>
+
+    <div class="section-wrapper">
+        <h2 class="section-title" data-i18n="section_title">Khám phá Hệ sinh thái của chúng tôi</h2>
+        
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-card-header blue"></div>
+                <div class="project-card-body">
+                    <img src="gino.png" alt="GinoNote Logo" class="project-img-icon">
+                    <h3 class="project-title">GinoNote App</h3>
+                    <p class="project-desc" data-i18n="gino_app_desc">La bàn dẫn lối tri thức. Ứng dụng ghi chú tích hợp hệ thống học tập khoa học Active Recall và Spaced Repetition, giúp bạn khắc sâu kiến thức vào trí nhớ.</p>
+                    <div class="btn-group">
+                        <a href="https://gino.lathedo.com/ginonote" class="btn btn-outline">
+                            <i class="material-icons">info</i> <span data-i18n="btn_learn_more">Tìm hiểu thêm</span>
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.lathedo.ginonote" class="btn btn-primary" target="_blank">
+                            <i class="material-icons">shop</i> <span data-i18n="btn_download">Tải ứng dụng</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-card-header"></div>
+                <div class="project-card-body">
+                    <i class="material-icons project-icon">cloud_sync</i>
+                    <h3 class="project-title">GinoNote Web Sync</h3>
+                    <p class="project-desc" data-i18n="gino_web_desc">Công cụ đồng bộ hóa dữ liệu trên nền web. Cho phép bạn quản lý, xem và đồng bộ dữ liệu ghi chú của GinoNote trực tiếp qua Google Drive một cách tiện lợi.</p>
+                    <div class="btn-group">
+                        <a href="https://gino.lathedo.com" class="btn btn-primary">
+                            <i class="material-icons">launch</i> <span data-i18n="btn_open_web">Mở ứng dụng Web</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2026 Lathedo Studio. All rights reserved.</p>
+        <div style="margin-top: 12px;">
+            <img src="ltd.png" alt="Lathedo Logo" style="height: 32px; width: auto; object-fit: contain; vertical-align: middle; opacity: 0.8;">
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            "vi": {
+                "hero_title": "Sáng tạo giải pháp, định hướng tương lai",
+                "hero_subtitle": "Chúng tôi xây dựng các ứng dụng khoa học và công cụ hữu ích nhằm giúp bạn tối ưu hóa thời gian, nỗ lực và vươn tới thành công.",
+                "section_title": "Khám phá Hệ sinh thái của chúng tôi",
+                "gino_app_desc": "La bàn dẫn lối tri thức. Ứng dụng ghi chú tích hợp hệ thống học tập khoa học Active Recall và Spaced Repetition, giúp bạn khắc sâu kiến thức vào trí nhớ.",
+                "btn_learn_more": "Tìm hiểu thêm",
+                "btn_download": "Tải ứng dụng",
+                "gino_web_desc": "Công cụ đồng bộ hóa dữ liệu trên nền web. Cho phép bạn quản lý, xem và đồng bộ dữ liệu ghi chú của GinoNote trực tiếp qua Google Drive một cách tiện lợi.",
+                "btn_open_web": "Mở ứng dụng Web"
+            },
+            "en": {
+                "hero_title": "Creating solutions, navigating the future",
+                "hero_subtitle": "We build scientific apps and useful tools to help you optimize your time, effort, and reach success.",
+                "section_title": "Explore Our Ecosystem",
+                "gino_app_desc": "Your compass to knowledge. A note-taking app integrating Active Recall and Spaced Repetition, helping you engrave knowledge into your long-term memory.",
+                "btn_learn_more": "Learn more",
+                "btn_download": "Download App",
+                "gino_web_desc": "Web-based data synchronization tool. Manage, view, and seamlessly sync your GinoNote data directly via Google Drive with ease.",
+                "btn_open_web": "Open Web App"
+            }
+        };
+
+        let currentLang = "vi";
+
+        function toggleLanguage() {
+            currentLang = currentLang === "vi" ? "en" : "vi";
+            
+            // Cập nhật text
+            const elements = document.querySelectorAll("[data-i18n]");
+            elements.forEach(element => {
+                const key = element.getAttribute("data-i18n");
+                if (translations[currentLang][key]) {
+                    element.innerHTML = translations[currentLang][key];
+                }
+            });
+            
+            // Đổi nhãn nút bấm
+            document.getElementById("langToggle").innerText = currentLang === "vi" ? "VI / EN" : "EN / VI";
+        }
+
+        // --- Xử lý Giao diện Sáng / Tối (Đồng bộ với Trình duyệt/OS) ---
+        const prefersDarkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        const themeIcon = document.getElementById('themeIcon');
+        const htmlEl = document.documentElement;
+
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                htmlEl.setAttribute('data-theme', 'dark');
+                if(themeIcon) themeIcon.innerText = 'light_mode'; 
+            } else {
+                htmlEl.removeAttribute('data-theme');
+                if(themeIcon) themeIcon.innerText = 'dark_mode'; 
+            }
+        }
+
+        function initTheme() {
+            const savedTheme = localStorage.getItem('lathedo_theme'); // Dùng key chung hoặc riêng
+            if (savedTheme) {
+                applyTheme(savedTheme);
+            } else {
+                applyTheme(prefersDarkQuery.matches ? 'dark' : 'light');
+            }
+        }
+
+        function toggleTheme() {
+            const isCurrentlyDark = htmlEl.getAttribute('data-theme') === 'dark';
+            const newTheme = isCurrentlyDark ? 'light' : 'dark';
+            
+            applyTheme(newTheme);
+            localStorage.setItem('lathedo_theme', newTheme);
+        }
+
+        prefersDarkQuery.addEventListener('change', (e) => {
+            if (!localStorage.getItem('lathedo_theme')) {
+                applyTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+        });
+    </script>
+</body>
+</html>
